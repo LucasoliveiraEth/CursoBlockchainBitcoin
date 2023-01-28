@@ -1,0 +1,45 @@
+
+<html lang="en">
+    <head>
+        <style>
+        body {
+            background-image: url("https://investnews.com.br/wp-content/uploads/2020/01/wikicommons.jpg")
+        }
+        </style>
+        
+        </head>
+        <head>
+            <title>Blockchain Bitcoin</title>
+        </head>
+<body>
+
+    <input type="text" id="coin" style="width:300px;" value="BTC">
+    <button onclick="fazerRequisicao();">Fazer requisição</button>
+    <hr />
+
+
+    <body>
+        <h1>Blockchain Bitcoin</h1>
+    <img src="https://logodownload.org/wp-content/uploads/2017/06/bitcoin-logo-0-1.png " alt="Imagem Bitcoin" style="width:100px;height:100px;">
+     <p>Preço atual do bitcoin: <div id="resposta"></div> </p>
+    </body>
+
+    <script>
+        function fazerRequisicao(){
+
+            var coin = document.getElementById('coin').value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "https://www.mercadobitcoin.net/api/" + coin + "/ticker", false);
+
+            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+            const obj = JSON.parse(xhttp.responseText);
+
+            console.log(obj.ticker.last);
+
+            document.getElementById("resposta").innerHTML = obj.ticker.last;
+        }
+    </script>
+</body>
+</html>
