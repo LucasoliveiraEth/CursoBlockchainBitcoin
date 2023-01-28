@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body {background-image: url(https://media.discordapp.net/attachments/997270158362034308/1068697209111056495/GABI_-_digital_nomad_brazil_a_website_logo_for_a_cryptocurrency_98c5e45f-cc79-4e54-91ae-5fe12b5a5166.png?width=585&height=585);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;}   
+            h1{text-align: center}
+            h1{font-size: 60px;}
+            h1{color: rgb(255, 153, 0);}
+            h2{color: aliceblue;}
+            p{color: aliceblue;}
+    
+        </style>
+    </head>
+<body>
+
+    <input type="text" id="coin" style="width:100px;" value="BTC">
+    <button onclick="fazerRequisicao();">Preço!</button>
+    <hr />
+    
+
+    <body>
+        <title>Coin Now Live</title>
+        <h1>Coin Now!</h1>
+        <h2>Site com o Objetivo de Mostrar o Valor atual das Criptomoedas</h2>
+        <p>Valor (em Dolar):</p>
+        <p>Valor (em Real): <div id="resposta"></div></p> 
+    </body>
+
+    <script>
+
+        window.onload = function() {fazerRequisicao()};
+
+        function fazerRequisicao(){
+
+            var coin = document.getElementById('coin').value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "https://www.mercadobitcoin.net/api/" + coin + "/ticker", false);
+
+            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+            const obj = JSON.parse(xhttp.responseText);
+
+            console.log(obj.ticker.last);
+
+            document.getElementById("resposta").innerHTML = obj.ticker.last;
+
+            
+        }
+    </script>
+</body>
+</html>
