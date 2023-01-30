@@ -1,0 +1,35 @@
+function obterPrecos()
+{
+    document.getElementById("precoBitcoin").innerHTML = fazerRequisicao("BTC");
+    document.getElementById("precoLitecoin").innerHTML = fazerRequisicao("LTC");
+    document.getElementById("precoEthereum").innerHTML = fazerRequisicao("ETH");
+    document.getElementById("precoBitcoincash").innerHTML = fazerRequisicao("BCH");
+    document.getElementById("precoDogecoin").innerHTML = fazerRequisicao("DOGE");
+    document.getElementById("precoShiba").innerHTML = fazerRequisicao("SHIB");
+}
+
+function fazerRequisicao(coinParam){
+
+    var coin = coinParam != null ? coinParam : document.getElementById('coin').value;
+
+    var xhttp = new XMLHttpRequest();
+    
+    xhttp.open("GET", "https://www.mercadobitcoin.net/api/" + coin + "/ticker", false);
+
+    xhttp.send();
+
+    const obj = JSON.parse(xhttp.responseText);
+
+    var valorMoeda = coinParam == "SHIB"? "R$ " + obj.ticker.last : formatarMoedaBRL(obj.ticker.last);
+
+    if(coinParam == null)
+      document.getElementById("precoOutrasCriptomoedas").innerHTML = coin == "SHIB" ? "R$ " + obj.ticker.last : valorMoeda;
+    
+    return valorMoeda;
+}
+
+function formatarMoedaBRL(valor)
+{
+   return Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(valor);
+}
+
