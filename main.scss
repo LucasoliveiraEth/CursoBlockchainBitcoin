@@ -1,0 +1,12 @@
+.bitcoin {
+    background-color: blue;
+    
+    &__image {
+        width: 200px;
+        height: 200px;
+    }
+
+    &__text {
+        width: 100%;
+    }
+}
