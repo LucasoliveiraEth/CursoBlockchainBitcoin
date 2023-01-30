@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Bitcoin</title>
+    <link rel="stylesheet" href="main.scss">
+</head>
+<body>
+    <div class="bitcoin">
+        <h1>Blockchain Bitcoin</h1>
+        <img class="bitcoin__image" src="./bitcoin.jpg" alt="">
+        <p>Preço atual do Bitcoin</p>
+        <input class="bitcoin__text" type="text" id="coin" value="">
+        <button onclick="fazerRequisicao();">Fazer requisição</button>
+        <hr />
+        <div id="resposta"></div>
+
+        <script>
+            window.onload = function() {fazerRequisicao()};
+
+            function fazerRequisicao(){
+
+                var coin = document.getElementById('coin').value;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET","https://www.mercadobitcoin.net/api "+coin+ "/ticker", false);
+
+                xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+                const obj = JSON.parse(xhttp.responseText);
+
+                console.log(obj.ticker.last);
+
+                document.getElementById("resposta").innerHTML = obj.ticker.last;
+            }
+        </script>
+    </div>
+</body>
+</html>
