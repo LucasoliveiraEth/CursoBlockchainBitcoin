@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Cripto</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/getPrice.js"></script>
+    <script>
+      window.onload = function () {
+        setInterval(getPrices, 1000);
+      };
+    </script>
+  </head>
+
+  <body class="content">
+    <div class="top">
+      <img
+        class="top"
+        src="https://bitcoinschool.net.br/assets/images/logo-bitcoin-school-144x68.png"
+      />Painel Cripto
+    </div>
+
+    <div class="card">
+      <div>
+        <h4 style="margin: 0">
+          Outras <br />
+          Criptomoedas
+        </h4>
+        <img
+          class="logo-mb"
+          src="https://static.mercadobitcoin.com.br/web/img/logos/mb/logo-icon-color.svg"
+          alt="MercadoBitcoin"
+        />
+        <input class="input-mb" type="text" id="coin" />
+        <button class="button-mb" type="button" onclick="getPrice();">
+          Consultar
+        </button>
+        <div style="margin-top: 15px" id="price-other">R$</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/BTC.png" alt="BTC" />
+      <div style="padding: 5px">
+        <h4>
+          Bitcoin <br />
+          (BTC)
+        </h4>
+        <div id="price-BTC"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/ETH.png" alt="ETH" />
+      <div style="padding: 5px">
+        <h4>
+          Ethereum <br />
+          (ETH)
+        </h4>
+        <div id="price-ETH"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/XRP.png" alt="XRP" />
+      <div style="padding: 5px">
+        <h4>
+          XRP <br />
+          (XRP)
+        </h4>
+        <div id="price-XRP"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/ADA.png" alt="ADA" />
+      <div style="padding: 5px">
+        <h4>
+          Cardano <br />
+          (ADA)
+        </h4>
+        <div id="price-ADA"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/DOGE.png" alt="DOGE" />
+      <div style="padding: 5px">
+        <h4>
+          Dogecoin <br />
+          (DOGE)
+        </h4>
+        <div id="price-DOGE"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/MATIC.png" alt="MATIC" />
+      <div style="padding: 5px">
+        <h4>
+          Polygon <br />
+          (MATIC)
+        </h4>
+        <div id="price-MATIC"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/SOL.png" alt="SOL" />
+      <div style="padding: 5px">
+        <h4>
+          Solana <br />
+          (SOL)
+        </h4>
+        <div id="price-SOL"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/DOT.png" alt="DOT" />
+      <div style="padding: 5px">
+        <h4>
+          Polkadot <br />
+          (DOT)
+        </h4>
+        <div id="price-DOT"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/LTC.png" alt="LTC" />
+      <div style="padding: 5px">
+        <h4>
+          Litecoin <br />
+          (LTC)
+        </h4>
+        <div id="price-LTC"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/SHIB.png" alt="SHIB" />
+      <div style="padding: 5px">
+        <h4>
+          Shiba Inu <br />
+          (SHIB)
+        </h4>
+        <div id="price-SHIB"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/AVAX.png" alt="AVAX" />
+      <div style="padding: 5px">
+        <h4>
+          Avalanche <br />
+          (AVAX)
+        </h4>
+        <div id="price-AVAX"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/UNI.png" alt="UNI" />
+      <div style="padding: 5px">
+        <h4>
+          Uniswap <br />
+          (UNI)
+        </h4>
+        <div id="price-UNI"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/ATOM.png" alt="ATOM" />
+      <div style="padding: 5px">
+        <h4>
+          Cosmos <br />
+          (ATOM)
+        </h4>
+        <div id="price-ATOM"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/LINK.png" alt="LINK" />
+      <div style="padding: 5px">
+        <h4>
+          Chainlink <br />
+          (LINK)
+        </h4>
+        <div id="price-LINK"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/BCH.png" alt="BCH" />
+      <div style="padding: 5px">
+        <h4>
+          Bitcoin Cash <br />
+          (BCH)
+        </h4>
+        <div style="vertical-align: bottom" id="price-BCH"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/XLM.png" alt="XLM" />
+      <div style="padding: 5px">
+        <h4>
+          Stellar <br />
+          (XLM)
+        </h4>
+        <div style="vertical-align: bottom" id="price-XLM"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/APE.png" alt="APE" />
+      <div style="padding: 5px">
+        <h4>
+          ApeCoin <br />
+          (APE)
+        </h4>
+        <div style="vertical-align: bottom" id="price-APE"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="logo" src="./img/USDC.png" alt="USDC" />
+      <div style="padding: 5px">
+        <h4>
+          USD Coin <br />
+          (USDC)
+        </h4>
+        <div style="vertical-align: bottom" id="price-USDC"></div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div style="margin: 30px">
+      Desenvolvido por Filêmon Santos &middot; Formação Desenvolvedor Blockchain
+      &middot; BitcoinSchool &middot; Rio de Janeiro, 2023
+    </div>
+  </body>
+</html>
