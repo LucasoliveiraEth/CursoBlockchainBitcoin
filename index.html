@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+   
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Blockchain Bitcoin</title>
+        <link href="./css/main.css" rel="stylesheet">
+        <script src="./Java/javascript.js"></script>
+        <script>
+            window.onload = function() { setInterval(obterPrecos, 1000); };
+        </script>
     </head>
+
     <body>
-        <input type="text" id="coin" style="width:300px;" value="BTC">
+        <input type="text" id="coin" class="input" value="BTC">
         <button onclick="fazerRequisicao();">Fazer requisição</button>
         <hr />
         
-        
         <body>
-            <h1>Blockchain Bitcoin</h1>
-            <img src="https://rlv.zcache.com/bitcoin_logo_symbol_cryptocurrency_crypto_sticker-r78a8263fc6bc471c927fadc804c9e306_0ugmp_8byvr_736.webp" 
-                alt="bitcoin logo"
-                style="height:200px; width:200px">
 
-            <p>Preço atual do Bitcoin:</p>
-            <p><div id="resposta"></div></p>
+            <h1 class="h1">Blockchain Bitcoin</h1>
+            <img class="imagem" src="https://rlv.zcache.com/bitcoin_logo_symbol_cryptocurrency_crypto_sticker-r78a8263fc6bc471c927fadc804c9e306_0ugmp_8byvr_736.webp" 
+                alt="bitcoin logo">
+            <p>Valor Criptomoeda:</p>
+            <p><div id="PrecoOutrasCriptomoedas"></div></p>
             
         </body>    
-    
-    <script>
-        window.onload = function() {fazerRequisicao()};
-        function fazerRequisicao(){
-    
-            var coin = document.getElementById('coin').value;
-    
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "https://www.mercadobitcoin.net/api/" + coin + "/ticker", false);
-    
-            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-            
-            const obj = JSON.parse(xhttp.responseText);
-
-            console.log(obj.ticker.last);
-
-            document.getElementById("resposta").innerHTML = obj.ticker.last;
-        }
-    </script>
-</body>
+    </body>
 </html>
