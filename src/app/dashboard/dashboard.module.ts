@@ -6,7 +6,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { TickerTapeComponent } from './ticker-tape/ticker-tape.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FormsModule } from  '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { RouterModule, Routes } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     HomeComponent,

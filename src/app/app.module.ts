@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,5 +22,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
   ],
   providers: [],
   bootstrap: [AppComponent]
-}),
+})
+
+
 export class AppModule { }

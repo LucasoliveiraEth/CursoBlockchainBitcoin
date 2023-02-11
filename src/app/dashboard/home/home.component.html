@@ -1,2 +1,21 @@
-<p>home works!</p>
-<p>{{precoBitcoin?.ticker?.last}}</p>
+
+<p>{{precoBitcoin.ticker?.last}}</p>
+
+<h3>Interpolation</h3>
+
+<h3>Quantidade bitcoins: {{valorBitcoin}}</h3>
+
+<button class="btn btn-warning" [disabled]="valorBitcoin == 0" >Buy</button>
+
+<h3>Event Binding<h3>
+    <button class="btn btn-warning" (click)="addBitcoin()">Add</button>
+    <button class="btn btn-warning" (click)="delBitcoin()" [disabled]="valorBitcoin < 10">Del</button>
+
+
+<h3>Two-way Binding</h3>
+
+<!--<input type="text" (keyup)="keyup($event)" placeholder="Digite a criptomoeda">
+<label>A criptomoeda é: {{criptomoeda}}</label>-->
+
+<input type="text" (ngModel)="criptomoeda" placeholder="Digite a criptomoeda"><br>
+<label>A criptomoeda é {{criptomoeda}}</label>
