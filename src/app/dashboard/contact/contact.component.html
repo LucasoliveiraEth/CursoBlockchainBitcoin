@@ -3,4 +3,37 @@
   <h2>The Bitcoin School</h2>
   <img src="https://bitcoinschool.net.br/assets/images/logo-bitcoin-school-144x68.png"/>
   <p>https://bitcoinschool.net.br/</p>
+
+  <p [ngClass]="{
+  'text-secondary': valorBitcoin < 10,
+  'text-success': valorBitcoin >= 10,
+  'text-warning': valorBitcoin >= 20,
+  'text-danger': valorBitcoin >= 30
+   }"> Quantidade de Bitcoins é {{valorBitcoin}}</p>
+
+
+
+<h3>Interpolation</h3>
+<h3>Quantidade bitcoins: {{valorBitcoin}}</h3>
+
+<h3>Property Binding</h3>
+<button class="btn btn-warning" [disabled]="valorBitcoin >= 1">Buy</button><br>
+<img [src]="urlImage" height="50px" width="50px" /><br>
+
+<h3> Event Binding</h3>
+<button class="btn btn-warning" (click)='addSatoshi()'>Add</button>
+<button class="btn btn-warning" (click)='delSatoshi()' [disabled]="valorBitcoin < 10" >Del</button><br>
+
+<h3>Two-way Binding</h3>
+
+<input type="text" (keyup)='KeyUp($event)' placeholder="Digite a criptomoeda"><br>
+<label>A criptomoeda é : {{criptomoeda}}</label>
+
+
+<input type="text" [ngModel]="criptomoeda" (ngModelChange)='criptomoeda = $event' placeholder="Digite a criptomoeda"><br>
+<label>A criptomoeda é : {{criptomoeda}}</label>
+
+<input type="text" [(ngModel)]="criptomoeda" placeholder="Digite a criptomoeda"><br>
+<label class="{{criptomoeda}}">A criptomoeda é : {{criptomoeda}}</label>
+
 </div>
