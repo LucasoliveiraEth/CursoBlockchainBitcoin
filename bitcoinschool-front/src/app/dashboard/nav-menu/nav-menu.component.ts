@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  public urlImage: string = "https://bitcoinschool.net.br/assets/images/logo-bitcoin-school-144x68.png";
 
   toggle() {
     this.isExpanded = !this.isExpanded;
