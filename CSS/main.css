@@ -3,13 +3,26 @@
     height: 200px;
 }
 
-.h1{
-    color: burlywood;
+h1{
+    color: rgb(235, 180, 108);
     text-align:center;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: rgb(0, 0, 0) 2px 0 10px;
+}
+
+.bottomtxt{
+    color: rgb(235, 180, 108);
+    text-align:left;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: rgb(0, 0, 0) 2px 0 10px;
+    display: inline-block;
 }
 
 input{
     width:100px;
+    text-align:auto;
 }
 
 
@@ -24,10 +37,18 @@ input{
     box-shadow: 0 0 5px gray;
     text-align: center;
     vertical-align: top;
+    background: linear-gradient( #8a21dadc,#df7d3cc3);
+    opacity: 1;
 }
 
 .content{
     text-align: center;
-    background: linear-gradient(#f1e688, #edb97f);
+    
     border-radius: 0.3em;
 }
+
+body {
+    background-image: url("../Images/background.jpg");
+    background-size: contain;
+    background-size: cover;
+  }
