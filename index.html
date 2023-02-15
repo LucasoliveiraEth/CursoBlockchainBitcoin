@@ -14,7 +14,7 @@
     
 <body>
     <div class="content">
-        <h1 class="h1">Painel Cripto</h1>
+        <h1>Painel Cripto</h1>
         <div class="card">    
             <h2 class="h2">Bitcoin</h2>
             <p>
@@ -59,11 +59,91 @@
                 <img src="./Images/bitcoincash-logo.png" alt="bitcoincash logo" style="width:100px;height:100px;">
                 <p>Valor BitcoinCash:</p><div id="precoBitcoincash"></div></p>
         </div>
-    
-        <div>
-            <p>Valor Outras Criptomoedas: <span id="valorOutrasCriptomoedas"></span></p>
-            <input type="text" id="coin" class="input" value="SHIB">
+
+        <div class="card">
+            <h2 class="h2">Solana</h2>
             <p>
+                <img src="./Images/solana-logo.png" alt="sollogo" style="width:100px;height:100px;">
+                <p>Valor Solana:</p><div id="precoSol"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">XRP</h2>
+            <p>
+                <img src="./Images/xrp-logo.png" alt="XRP logo" style="width:100px;height:100px;">
+                <p>Valor XRP:</p><div id="precoXRP"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">Polygon</h2>
+            <p>
+                <img src="./Images/matic-logo.png" alt="matic logo" style="width:100px;height:100px;">
+                <p>Valor Matic:</p><div id="precoMatic"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">USDC</h2>
+            <p>
+                <img src="./Images/usd-logo.png" alt="USDC logo" style="width:100px;height:100px;">
+                <p>Valor USDC:</p><div id="precoUSDC"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">AVAX</h2>
+            <p>
+                <img src="./Images/AVAX-logo.png" alt="AVAX logo" style="width:100px;height:100px;">
+                <p>Valor AVAX:</p><div id="precoAVAX"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">UNI</h2>
+            <p>
+                <img src="./Images/uni-logo.png" alt="UNI logo" style="width:100px;height:100px;">
+                <p>Valor UNI:</p><div id="precoUNI"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">APE</h2>
+            <p>
+                <img src="./Images/ape-logo.png" alt="APE logo" style="width:100px;height:100px;">
+                <p>Valor APE:</p><div id="precoAPE"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">POLKADOT</h2>
+            <p>
+                <img src="./Images/dot-logo.png" alt="DOT logo" style="width:100px;height:100px;">
+                <p>Valor DOT:</p><div id="precoDOT"></div></p>
+            </p>
+        </div>
+    
+        <div class="card">
+            <h2 class="h2">CARDANO</h2>
+            <p>
+                <img src="./Images/cardano-ada-logo.png" alt="ADA logo" style="width:100px;height:100px;">
+                <p>Valor ADA:</p><div id="precoADA"></div></p>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="h2">CHAINLINK</h2>
+            <p>
+                <img src="./Images/chainlink-logo.png" alt="LINK logo" style="width:100px;height:100px;">
+                <p>Valor LINK:</p><div id="precoLINK"></div></p>
+            </p>
+        </div>
+
+        <div>
+            <p class="bottomtxt">Valor Outras Criptomoedas: <div class="bottomtxt" id="PrecoOutrasCriptomoedas"></div></h1>
+            <p>   
+                <input type="text" id="coin" class="input" value="SHIB">
                 <button type="button" onclick="fazerRequisicao();">Fazer requisição</button>
             </p>
             <hr>
