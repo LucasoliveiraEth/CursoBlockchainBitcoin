@@ -6,6 +6,17 @@ function obterPrecos()
     document.getElementById("precoBitcoincash").innerHTML = fazerRequisicao("BCH");
     document.getElementById("precoDogecoin").innerHTML = fazerRequisicao("DOGE");
     document.getElementById("precoShiba").innerHTML = fazerRequisicao("SHIB");
+    document.getElementById("precoSol").innerHTML = fazerRequisicao("SOL");
+    document.getElementById("precoXRP").innerHTML = fazerRequisicao("XRP");
+    document.getElementById("precoMatic").innerHTML = fazerRequisicao("MATIC");
+    document.getElementById("precoUSDC").innerHTML = fazerRequisicao("USDC");
+    document.getElementById("precoAVAX").innerHTML = fazerRequisicao("AVAX");
+    document.getElementById("precoUNI").innerHTML = fazerRequisicao("UNI");
+    document.getElementById("precoAPE").innerHTML = fazerRequisicao("APE");
+    document.getElementById("precoADA").innerHTML = fazerRequisicao("ADA");
+    document.getElementById("precoDOT").innerHTML = fazerRequisicao("DOT");
+    document.getElementById("precoLINK").innerHTML = fazerRequisicao("LINK");
+
 }
 
 function fazerRequisicao(coinParam){
@@ -37,4 +48,5 @@ function formatarMoedaBRL(valor)
     //5000 -> R$ 5.000,00
    return Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(valor);
 }
+
 
