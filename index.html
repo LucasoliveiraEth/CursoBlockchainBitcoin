@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Painel Crypto</title>
-        <link href="./css/main.css" rel="stylesheet">
-        <script src="./Java/javascript.js"></script>
-        <script>
-            window.onload = function() { setInterval(obterPrecos, 1000); };
-        </script>
-    </head>
-
-    <body>
-        <input type="text" id="coin" class="input" value="BTC">
-        <button onclick="fazerRequisicao();">Fazer requisição</button>
-        <hr />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel Crypto</title>
+    <link href="./css/main.css" rel="stylesheet">
+    <script src="./Java/javascript.js"></script>
+    <script>
+        window.onload = function() { setInterval(obterPrecos, 1000); };
+    </script>
+</head>
+    
+<body>
+    <div class="content">
+        <h1 class="h1">Painel Cripto</h1>
+        <div class="card">    
+            <h2 class="h2">Bitcoin</h2>
+            <p>
+                <img class="imagem" src="./Images/bitcoin-logo.png"  alt="bitcoin logo" style="width:100px;height:100px;">
+                <p>Valor Bitcoin:</p>
+                <div id="precoBitcoin"></div>
+            </p>
+        </div>
         
-        <body class="content">
+        <div class="card">
+            <h2 class="h2">Ethereum</h2>
+            <p>
+                <img src="./Images/ethereum-logo.png" alt="eth logo" style="width:100px;height:100px;">
+                <p>Valor Ethereum:</p><div id="precoEthereum"></div></p>
+            </p>
+        </div>
 
-            <h1 class="h1">Painel Cripto</h1>
-            <div class="card">    
-                <h2 class="h2">Bitcoin</h2>
-                <p>
-                    <img class="imagem" src="./Images/bitcoin-logo.png"  alt="bitcoin logo" style="width:100px;height:100px;">
-                    <p>Valor Bitcoin:</p>
-                    <div id="precoBitcoin"></div>
-                </p>
-            </div>
-            
-            <div class="card">
-                <h2 class="h2">Ethereum</h2>
-                <p>
-                    <img src="./Images/ethereum-logo.png" alt="eth logo" style="width:100px;height:100px;">
-                    <p>Valor Ethereum:</p><div id="precoEthereum"></div></p>
-                </p>
-            </div>
+        <div class="card">
+            <h2 class="h2">Dogecoin</h2>
+        
+                <img src="./Images/dogecoin-logo.png" alt="dogecoin logo" style="width:100px;height:100px;">
+                <p>Valor Dogecoin:</p><div id="precoDogecoin"></div></p>    
+        </div>
 
-            <div class="card">
-                <h2 class="h2">Dogecoin</h2>
-            
-                    <img src="./Images/dogecoin-logo.png" alt="dogecoin logo" style="width:100px;height:100px;">
-                    <p>Valor Dogecoin:</p><div id="precoDogecoin"></div></p>    
-            </div>
+        <div class="card">
+            <h2 class="h2">Shiba</h2>
+        
+                <img src="./Images/shiba-logo.png" alt="shiba logo" style="width:100px;height:100px;">
+                <p>Valor Shiba:</p><div id="precoShiba"></div></p>
+        </div>
+        
+        <div class="card">
+            <h2 class="h2">Litecoin</h2>
+        
+                <img src="./Images/litecoin-logo.png" alt="shiba logo" style="width:100px;height:100px;">
+                <p>Valor Litecoin:</p><div id="precoLitecoin"></div></p>
+        </div>
 
-            <div class="card">
-                <h2 class="h2">Shiba</h2>
-            
-                    <img src="./Images/shiba-logo.png" alt="shiba logo" style="width:100px;height:100px;">
-                    <p>Valor Shiba:</p><div id="precoShiba"></div></p>
-            </div>
-            
-            <div class="card">
-                <h2 class="h2">Litecoin</h2>
-            
-                    <img src="./Images/litecoin-logo.png" alt="shiba logo" style="width:100px;height:100px;">
-                    <p>Valor Litecoin:</p><div id="precoLitecoin"></div></p>
-            </div>
-
-            <div class="card">
-                <h2 class="h2">BitcoinCash</h2>
-            
-                    <img src="./Images/bitcoincash-logo.png" alt="bitcoincash logo" style="width:100px;height:100px;">
-                    <p>Valor BitcoinCash:</p><div id="precoBitcoincash"></div></p>
-            </div>
-
-            <p>Valor Outras Criptomoedas:</p><div id="PrecoOutrasCriptomoedas"></div></p></p>
-      
-        </body>    
-    </body>
+        <div class="card">
+            <h2 class="h2">BitcoinCash</h2>
+        
+                <img src="./Images/bitcoincash-logo.png" alt="bitcoincash logo" style="width:100px;height:100px;">
+                <p>Valor BitcoinCash:</p><div id="precoBitcoincash"></div></p>
+        </div>
+    
+        <div>
+            <p>Valor Outras Criptomoedas: <span id="valorOutrasCriptomoedas"></span></p>
+            <input type="text" id="coin" class="input" value="SHIB">
+            <p>
+                <button type="button" onclick="fazerRequisicao();">Fazer requisição</button>
+            </p>
+            <hr>
+        </div>
+    </div>
+</body>    
 </html>
