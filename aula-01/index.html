@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script>
+            function getPrice(pcoin){
+                var coin = document.getElementById('coin').value;
+                if(coin==null||coin==""){
+                    coin = pcoin
+                }
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "https://www.mercadobitcoin.net/api/" + coin + "/ticker", false);
+                //xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+                //xhttp.setRequestHeader('Access-Control-Request-Method', 'OPTIONS,GET');
+                //xhttp.setRequestHeader('Access-Control-Request-Headers', 'origin');
+
+                xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+                const obj = JSON.parse(xhttp.responseText);
+
+                console.log(obj.ticker.last);
+
+                document.getElementById("resposta").innerHTML = formatarMoedaBRL(obj.ticker.last);
+            }
+
+            function formatarMoedaBRL(valor)
+            {
+                //5000 -> R$ 5.000,00
+            return Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(valor);
+            }
+
+            window.onload = function() {getPrice("BTC")};
+        </script>
+    </head>
+    <body>
+        <p>Preço atual do Bitcoin</p>
+        <input class="bitcoin__text" type="text" id="coin" value="">
+        <button onclick="getPrice('BTC');">Fazer requisição</button>
+        <hr />
+        <div id="resposta"></div>
+    
+    </body>
+</html>
