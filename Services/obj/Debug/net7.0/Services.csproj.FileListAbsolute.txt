@@ -1,0 +1,15 @@
+D:\Projetos\DependencyInjection.Api\Services\bin\Debug\net7.0\Services.deps.json
+D:\Projetos\DependencyInjection.Api\Services\bin\Debug\net7.0\Services.dll
+D:\Projetos\DependencyInjection.Api\Services\bin\Debug\net7.0\Services.pdb
+D:\Projetos\DependencyInjection.Api\Services\bin\Debug\net7.0\Infra.dll
+D:\Projetos\DependencyInjection.Api\Services\bin\Debug\net7.0\Infra.pdb
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.csproj.AssemblyReference.cache
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.AssemblyInfoInputs.cache
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.AssemblyInfo.cs
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.csproj.CoreCompileInputs.cache
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.csproj.CopyComplete
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.dll
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\refint\Services.dll
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\Services.pdb
+D:\Projetos\DependencyInjection.Api\Services\obj\Debug\net7.0\ref\Services.dll

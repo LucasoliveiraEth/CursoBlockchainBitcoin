@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "izNge7icEJ2lyhMy0/sA6VtKy1fG1iQ6FBgkfWbpFcLDAgtnUUsXJWk9/Hhdt/eC5csKVV6KuVTslJyX3NsApA==",
+  "success": true,
+  "projectFilePath": "D:\\Projetos\\DependencyInjection.Api\\Infra\\Infra.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jader\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
