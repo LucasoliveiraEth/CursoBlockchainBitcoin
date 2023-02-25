@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,12 @@ import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+// **************************************************
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
+// **************************************************
 
 @NgModule({
   declarations: [
@@ -29,7 +35,11 @@ import { HttpClientModule } from '@angular/common/http';
     ])
 
   ],
-  providers: [],
+  providers: [
+     // ************************************
+     { provide: LOCALE_ID, useValue: 'pt' },
+     // ************************************
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
