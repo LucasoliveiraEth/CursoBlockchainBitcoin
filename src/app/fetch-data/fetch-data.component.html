@@ -1,0 +1,57 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+{{price | currency:'BRL'}}
+<br>
+
+<!-- <div class="progress"  style="height: 5px;">
+  <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{valor}}%"></div>
+</div> -->
+
+<div class="form-group">
+  <label>Endereço Bitcoin</label>
+  <input class="form-control carteira" name="criptomoeda">
+  <small class="form-text text-muted">
+    Um Endereço de Bitcon deve ter 34 caracteres contendo letras e números.
+  </small>
+</div>
+<br>
+<div class="form-group">
+  <button _ngcontent-c7="" class="btn btn-success" triggers="focus"
+    type="button" ng-reflect-triggers="focus">
+    <i class="fa fa-search"></i> Consultar</button>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Criptomoeda</th>
+      <th>Ultimo Valor</th>
+      <th>Maior Valor</th>
+      <th>Menor Valor</th>
+      <th>Média</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BTC</td>
+      <td>211.344,98</td>
+      <td>211.343,90</td>
+      <td>211.342,97</td>
+      <td>211.342,97</td>
+      <td>2.266.343,92</td>
+    </tr>
+    <tr>
+      <td>LTC</td>
+      <td>444,98</td>
+      <td>443,97</td>
+      <td>442,93</td>
+      <td>442,93</td>
+      <td>3.010.444,90</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button type="button" class="btn btn-warning">Warning</button>
