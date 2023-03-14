@@ -22,6 +22,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import {MatSortModule} from '@angular/material/sort';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -33,7 +36,10 @@ registerLocaleData(ptBr);
       EventosComponent,
       NavComponent,
       FetchDataComponent,
-      HomeComponent
+      HomeComponent,
+      UserComponent,
+      LoginComponent,
+      RegisterComponent
    ],
   imports: [
     BrowserModule,
@@ -41,8 +47,18 @@ registerLocaleData(ptBr);
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+
+      {
+        path: 'user', component : UserComponent ,
+        children : [
+          { path: 'login', component:  LoginComponent},
+          { path: 'register', component: RegisterComponent },
+        ]
+      },
+      { path: 'home', component: HomeComponent},
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]),
     MatPaginatorModule,
     MatTableModule,
