@@ -8,19 +8,40 @@
 	</div>
 
 	<div class="col-md-6">
-
-		<form class="p-1" [formGroup]="loginForm">
+		<form class="p-1" [formGroup]="loginFormGroup">
       <div class="pb-2 d-block d-md-none">
         <h3 class="border-bottom">Crie sua conta</h3>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="text" placeholder="Email" formControlName="email" required/>
+          <input class="form-control"
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid':  (submitted || loginForm['email'].touched) && loginForm['email'].errors}"/>
+          <div *ngIf="loginForm['email'].hasError('required')" class="invalid-feedback">
+            E-mail não informado.
+          </div>
+
         </div>
       </div><br>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="password" placeholder="Senha" formControlName="password" required/>
+          <!-- loginForm.get('email')?.touched -->
+          <input class="form-control"
+          type="password"
+          placeholder="Senha"
+          formControlName="password"
+           [ngClass]="{ 'is-invalid':  (submitted || loginForm['password'].touched) && loginForm['password'].errors}"/>
+           <div *ngIf="loginForm['password'].hasError('required')" class="invalid-feedback">
+              Password não informado.
+          </div>
+          <div *ngIf="loginForm['password'].hasError('minlength')" class="invalid-feedback">
+            Password precisa ter no minimo 5 caracteres.
+          </div>
+          <div *ngIf="loginForm['password'].hasError('maxlength')" class="invalid-feedback">
+            Password precisa ter no máximo 10 caracteres.
+          </div>
         </div>
       </div><br>
       <div class="form-row p-1 mb-3">

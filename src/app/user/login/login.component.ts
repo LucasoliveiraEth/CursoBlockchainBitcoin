@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +9,8 @@ import { User } from 'src/app/models/usuario';
 })
 export class LoginComponent implements OnInit {
    returnUrl: string = "";
-   loginForm!: FormGroup;
+   loginFormGroup!: FormGroup;
+   submitted = false;
 
    constructor( private formBuilder: FormBuilder,
     private router: Router,
@@ -18,10 +18,15 @@ export class LoginComponent implements OnInit {
    }
 
    ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+    /*this.loginFormGroup = this.formBuilder.group({
+      email: ['', Validators.nullValidator],
       password: ['', Validators.required]
-    });
+    });*/
+
+    this.loginFormGroup = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)])
+   });
 
      // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -30,21 +35,22 @@ export class LoginComponent implements OnInit {
 
 
   // convenience getter for easy access to form fields
-  get modelo() { return this.loginForm.controls; }
+  get loginForm() { return this.loginFormGroup.controls; }
 
    realizarLogin(): void
    {
+     this.submitted = true;
       console.log("entrei");
       // stop here if form is invalid
-      if (this.loginForm.invalid) {
+      if (this.loginFormGroup.invalid) {
         return;
       }
 
-      if(this.modelo['email'].value == "btcschool")
+      if(this.loginForm['email'].value == "btcschool@btcschool.com")
          //console.log("btcschool");
-         this.router.navigate([this.returnUrl]);
+          this.router.navigate([this.returnUrl]);
       else
-         console.log("nope" + this.modelo['email'].value);
+         console.log("nope" + this.loginForm['email'].value);
 
    }
 }

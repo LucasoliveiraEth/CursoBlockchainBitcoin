@@ -20,6 +20,7 @@ export class NavComponent {
 
   showMenu() : boolean
   {
-      return this.router.url != '/user/login';
+      return this.router.url != '/user/login' &&
+             this.router.url != '/user/register';
   }
 }
