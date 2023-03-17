@@ -9,18 +9,18 @@
 
 	<div class="col-md-6">
 
-		<form class="p-1">
+		<form class="p-1" [formGroup]="loginForm">
       <div class="pb-2 d-block d-md-none">
         <h3 class="border-bottom">Crie sua conta</h3>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="text" placeholder="Email" required/>
+          <input class="form-control" type="text" placeholder="Email" formControlName="email" required/>
         </div>
       </div><br>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="password" placeholder="Senha" required/>
+          <input class="form-control" type="password" placeholder="Senha" formControlName="password" required/>
         </div>
       </div><br>
       <div class="form-row p-1 mb-3">
@@ -30,9 +30,11 @@
       </div>
       <div class="form-row">
         <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-4">
+          <button class="btn btn-lg btn-success btn-block px-4" type="button"
+          (click)="realizarLogin()">
             LOGIN
           </button>
+
         </div>
       </div>
       <div class="form-row">
