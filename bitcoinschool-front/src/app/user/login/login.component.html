@@ -1,0 +1,66 @@
+<div class="row mt-4">
+	<div class="col-md-6 d-none d-md-block" style="height: 450px;">
+		<div class="text-center col-md-12 my-auto side-heder">
+			<h1>Crie sua conta</h1>
+			<img src="../../../../assets/images/logo-bitcoin-school-144x68.png" class="my-4" alt="" width="180px">
+		</div>
+	</div>
+	<div class="col-md-6">
+		<form class="p-1" [formGroup]="loginFormGroup">
+      <div class="pb-2 d-block d-md-none">
+        <h3 class="border-bottom">Crie sua conta</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input class="form-control"
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid':  (submitted || loginForm['email'].touched) && loginForm['email'].errors}"/>
+          <div *ngIf="loginForm['email'].hasError('required')" class="invalid-feedback">
+            E-mail não informado.
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <!-- loginFormGroup.get('email')?.touched -->
+          <input class="form-control"
+          type="password"
+          placeholder="Senha"
+          formControlName="password"
+           [ngClass]="{ 'is-invalid':  (submitted || loginForm['password'].touched) && loginForm['password'].errors}"/>
+           <div *ngIf="loginForm['password'].hasError('required')" class="invalid-feedback">
+              Password não informado.
+          </div>
+          <div *ngIf="loginForm['password'].hasError('minlength')" class="invalid-feedback">
+            Password precisa ter no minimo 5 caracteres.
+          </div>
+          <div *ngIf="loginForm['password'].hasError('maxlength')" class="invalid-feedback">
+            Password precisa ter no máximo 10 caracteres.
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row p-1 mb-3">
+        <div class="custom-control custom-checkbox">
+          <label class="custom-control-label">Ao se inscrever, você concorda com nossos <a href="#">Termos de Uso</a>.</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12">
+          <button class="btn btn-lg btn-success btn-block px-4" type="button"
+          (click)="realizarLogin()">
+            LOGIN
+          </button>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12">
+          <a class="btn btn-link btn-block" routerLink="/user/register">
+            Inscreva-se na Bitcoin School
+          </a>
+        </div>
+      </div>
+    </form>
+	</div>
+</div>

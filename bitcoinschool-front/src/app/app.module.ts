@@ -11,7 +11,10 @@ import { ApiService } from './services/api.service';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { DashboardService } from './services/dashboard.service';
-import { LoginComponent } from './login/login/login.component';
+import { LoginComponent } from './user/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './user/register/register.component';
+import { UserComponent } from './user/user.component';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -20,14 +23,17 @@ registerLocaleData(ptBr);
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,
