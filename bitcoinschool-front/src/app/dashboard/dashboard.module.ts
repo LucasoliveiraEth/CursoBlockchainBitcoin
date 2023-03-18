@@ -6,9 +6,14 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { TickerTapeComponent } from './ticker-tape/ticker-tape.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterModule,
     FormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSelectModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   exports: [
     HomeComponent,
