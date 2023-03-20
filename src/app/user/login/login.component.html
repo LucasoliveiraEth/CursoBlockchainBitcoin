@@ -55,6 +55,8 @@
           (click)="realizarLogin()">
             LOGIN
           </button>
+          <button class="btn btn-success"
+          [disabled]="loginFormGroup.invalid">LOGIN</button>
 
         </div>
       </div>
@@ -63,6 +65,7 @@
           <a class="btn btn-link btn-block" routerLink="/user/register">
             Inscreva-se na Bitcoin School
           </a>
+
         </div>
       </div>
     </form>
