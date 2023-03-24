@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
 })
 export class UsuarioService extends ApiService{
 
-  createuser(usuario : Usuarios)
+  create(usuario : Usuarios)
   {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpPost<Usuarios>("Usuarios/Create", usuario, headers);

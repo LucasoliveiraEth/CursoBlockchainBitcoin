@@ -46,7 +46,7 @@ export class RegisterComponent {
     }
 
     this.usuario = this.registerFormGroup.value;
-    this.usuarioService.createuser(this.usuario);
+    this.usuarioService.create(this.usuario);
 
     /*if(this.registerForm['email'].value == "btcschool@btcschool.com")
         this.router.navigate([this.returnUrl]);
