@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuarios } from 'src/app/models/Usuarios';
-import { RegisterService } from 'src/app/services/register.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ export class RegisterComponent {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private usuarioService: RegisterService) {
+    private usuarioService: UsuarioService) {
 
       this.registerFormGroup = this.formBuilder.group({
         nome: ['', [Validators.required]],
