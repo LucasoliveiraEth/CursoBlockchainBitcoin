@@ -1,112 +1,29 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private apiURL = "http://localhost:3000";
+  protected apiUrl = 'https://localhost:7003'; // URL da sua API
 
-  /*------------------------------------------
-  --------------------------------------------
-  Http Header Options
-  --------------------------------------------
-  --------------------------------------------*/
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+  constructor(private http: HttpClient) {}
+
+  protected httpGet<T>(url: string, headers?: HttpHeaders) {
+    return this.http.get<T>(`${this.apiUrl}/${url}`, { headers }).subscribe();
   }
 
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
-  constructor(private httpClient: HttpClient) { }
-   /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-   getAll(endpoint:string): Observable<any> {
-
-    return this.httpClient.get(this.apiURL + endpoint)
-
-    .pipe(
-      catchError(this.errorHandler)
-    )
+  protected httpPost<T>(url: string, body: any, headers?: HttpHeaders) {
+    return this.http.post<T>(`${this.apiUrl}/${url}`, body, { headers }).subscribe();
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  create(post:any, endpoint:string): Observable<any> {
-
-    return this.httpClient.post(this.apiURL + endpoint, JSON.stringify(post), this.httpOptions)
-
-    .pipe(
-      catchError(this.errorHandler)
-    )
+  protected httpPut<T>(url: string, body: any, headers?: HttpHeaders) {
+    return this.http.put<T>(`${this.apiUrl}/${url}`, body, { headers }).subscribe();
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  find(id:number, endpoint:string): Observable<any> {
-
-    return this.httpClient.get(this.apiURL + endpoint + id)
-
-    .pipe(
-      catchError(this.errorHandler)
-    )
+  protected httpDelete<T>(url: string, headers?: HttpHeaders) {
+    return this.http.delete<T>(`${this.apiUrl}/${url}`, { headers }).subscribe();
   }
-
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  update(id:number, post:any, endpoint: string): Observable<any> {
-
-    return this.httpClient.put(this.apiURL + endpoint + id, JSON.stringify(post), this.httpOptions)
-
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
-
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  delete(id:number, endpoint:string){
-    return this.httpClient.delete(this.apiURL + endpoint + id, this.httpOptions)
-
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
-
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  errorHandler(error:any) {
-    let errorMessage = '';
-    if(error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(() => Error(errorMessage));
- }
 }

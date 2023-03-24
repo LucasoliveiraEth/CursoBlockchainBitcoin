@@ -14,7 +14,7 @@
         <div class="form-group col-sm-6">
           <input class="form-control"
           type="text"
-          placeholder="Email"
+          placeholder="E-mail"
           formControlName="email"
           [ngClass]="{ 'is-invalid':  (submitted || loginForm['email'].touched) && loginForm['email'].errors}"/>
           <div *ngIf="loginForm['email'].hasError('required')" class="invalid-feedback">

@@ -9,8 +9,8 @@ import { ApiService } from './api.service';
 })
 export class DashboardService extends  ApiService {
 
-  get() : Observable<PrecoBitcoin>
+  get()
   {
-    return this.getAll("/ticker");
+
   }
 }

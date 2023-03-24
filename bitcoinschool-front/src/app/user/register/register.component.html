@@ -8,23 +8,41 @@
 	</div>
 
 	<div class="col-md-6">
-		<form class="p-1">
+		<form class="p-1" [formGroup]="registerFormGroup">
       <div class="pb-2 d-block d-md-none">
         <h3 class="border-bottom">Crie sua conta</h3>
       </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input type="text" class="form-control" placeholder="Nome"/>
+          <input type="text" class="form-control"
+          placeholder="Nome"
+          formControlName="nome"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['nome'].touched) && registerForm['nome'].errors}"/>
+          <div *ngIf="registerForm['nome'].hasError('required')" class="invalid-feedback">
+            Nome não informado.
+          </div>
         </div>
       </div><br>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="text" placeholder="Email"/>
+          <input class="form-control" type="text"
+          placeholder="E-mail"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['email'].touched) && registerForm['email'].errors}"/>
+          <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
+            E-mail não informado.
+          </div>
         </div>
       </div><br>
       <div class="form-row">
         <div class="form-group col-sm-6">
-          <input class="form-control" type="password" placeholder="Senha"/>
+          <input class="form-control" type="password"
+          placeholder="Senha"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['password'].touched) && registerForm['password'].errors}"/>
+          <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
+            Senha não informada.
+          </div>
         </div>
       </div><br>
       <div class="form-row p-1 mb-3">
@@ -34,7 +52,8 @@
       </div>
       <div class="form-row">
         <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-4">
+          <button class="btn btn-lg btn-success btn-block px-4"
+          (click)="createuser()">
             CADASTRE-SE
           </button>
         </div>

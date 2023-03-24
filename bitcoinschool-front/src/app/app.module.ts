@@ -15,6 +15,7 @@ import { LoginComponent } from './user/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './user/register/register.component';
 import { UserComponent } from './user/user.component';
+import { RegisterService } from './services/register.service';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -38,6 +39,7 @@ registerLocaleData(ptBr);
   providers: [
     ApiService,
     DashboardService,
+    RegisterService,
     // ************************************
     { provide: LOCALE_ID, useValue: 'pt' },
     // ************************************
