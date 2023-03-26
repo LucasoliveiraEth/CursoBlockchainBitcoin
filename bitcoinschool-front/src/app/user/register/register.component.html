@@ -32,6 +32,9 @@
           <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
             E-mail não informado.
           </div>
+          <div *ngIf="registerForm['email'].hasError('email')" class="invalid-feedback">
+            E-mail inválido.
+          </div>
         </div>
       </div><br>
       <div class="form-row">
@@ -40,8 +43,14 @@
           placeholder="Senha"
           formControlName="password"
           [ngClass]="{ 'is-invalid':  (submitted || registerForm['password'].touched) && registerForm['password'].errors}"/>
-          <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
+          <div *ngIf="registerForm['password'].hasError('required')" class="invalid-feedback">
             Senha não informada.
+          </div>
+          <div *ngIf="registerForm['password'].hasError('minlength')" class="invalid-feedback">
+            Password precisa ter no minimo 5 caracteres.
+          </div>
+          <div *ngIf="registerForm['password'].hasError('maxlength')" class="invalid-feedback">
+            Password precisa ter no máximo 10 caracteres.
           </div>
         </div>
       </div><br>

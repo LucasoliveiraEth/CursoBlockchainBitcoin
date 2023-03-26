@@ -20,6 +20,9 @@
           <div *ngIf="loginForm['email'].hasError('required')" class="invalid-feedback">
             E-mail não informado.
           </div>
+          <div *ngIf="loginForm['email'].hasError('email')" class="invalid-feedback">
+            E-mail inválido.
+          </div>
         </div>
       </div><br>
       <div class="form-row">
