@@ -13,7 +13,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class RegisterComponent {
 
-  usuario!: Usuarios;
+  //usuario!: Usuarios;
+  usuario: any;
   returnUrl: string = "";
   registerFormGroup! : FormGroup;
   submitted = false;
@@ -31,7 +32,7 @@ export class RegisterComponent {
       this.registerFormGroup = this.formBuilder.group({
         nome: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
+        senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
       });
 
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -55,9 +56,10 @@ export class RegisterComponent {
     //this.usuarioService.create(this.usuario);
     //this.http.post('https://localhost:7285/Usuarios/Create',this.usuario);
 
-    this.http.post('https://localhost:7285/Usuarios/Create', this.usuario, { headers })
+    this.http.post('https://localhost:7285/Usuarios/Create', this.usuario,
+    { headers })
     .subscribe(data => {
-      //this.usuario = data;
+      this.usuario = data;
       console.log(data);
     });
 
