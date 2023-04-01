@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,9 +49,17 @@ export class RegisterComponent {
       return;
     }
 
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
     this.usuario = this.registerFormGroup.value;
     //this.usuarioService.create(this.usuario);
-    this.http.post('https://localhost:7285/Usuarios/Create',this.usuario);
+    //this.http.post('https://localhost:7285/Usuarios/Create',this.usuario);
+
+    this.http.post('https://localhost:7285/Usuarios/Create', this.usuario, { headers })
+    .subscribe(data => {
+      //this.usuario = data;
+      console.log(data);
+    });
 
     this.usuarioCadastrado = "Usuário cadastrado com sucesso."
 
