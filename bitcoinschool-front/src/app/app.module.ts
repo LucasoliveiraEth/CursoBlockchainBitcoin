@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { ApiService } from './services/api.service';
+import { BaseService } from './services/api.service';
 
 // **************************************************
 import ptBr from '@angular/common/locales/pt';
@@ -37,7 +37,7 @@ registerLocaleData(ptBr);
     ReactiveFormsModule
   ],
   providers: [
-    ApiService,
+    BaseService,
     DashboardService,
     UsuarioService,
     // ************************************

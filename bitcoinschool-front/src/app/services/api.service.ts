@@ -1,29 +1,52 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class BaseService {
+  protected apiUrl = 'https://localhost:7285/';
+  protected headers: HttpHeaders;
 
-  protected apiUrl = 'https://localhost:7003'; // URL da sua API
-
-  constructor(private http: HttpClient) {}
-
-  protected httpGet<T>(url: string, headers?: HttpHeaders) {
-    return this.http.get<T>(`${this.apiUrl}/${url}`, { headers }).subscribe();
+  constructor(protected http: HttpClient) {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
   }
 
-  protected httpPost<T>(url: string, body: any, headers?: HttpHeaders) {
-    return this.http.post<T>(`${this.apiUrl}/${url}`, body, { headers }).subscribe();
+  protected handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(`Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError('Something bad happened; please try again later.');
   }
 
-  protected httpPut<T>(url: string, body: any, headers?: HttpHeaders) {
-    return this.http.put<T>(`${this.apiUrl}/${url}`, body, { headers }).subscribe();
+  protected request<T>(method: string, url: string, body?: any): Observable<T> {
+    const options = { headers: this.headers };
+    return this.http.request<T>(method, this.apiUrl + url, {...options, body})
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  protected httpDelete<T>(url: string, headers?: HttpHeaders) {
-    return this.http.delete<T>(`${this.apiUrl}/${url}`, { headers }).subscribe();
+  protected get<T>(url: string): Observable<T> {
+    return this.request<T>('GET', url);
+  }
+
+  protected post<T>(url: string, body?: any): Observable<T> {
+    return this.request<T>('POST', url, body);
+  }
+
+  protected put<T>(url: string, body?: any): Observable<T> {
+    return this.request<T>('PUT', url, body);
+  }
+
+  protected delete<T>(url: string): Observable<T> {
+    return this.request<T>('DELETE', url);
   }
 }

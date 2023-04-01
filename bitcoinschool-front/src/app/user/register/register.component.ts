@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class RegisterComponent {
   returnUrl: string = "";
   registerFormGroup! : FormGroup;
   submitted = false;
+  usuarioCadastrado = "";
 
   /**
    *
@@ -23,7 +25,8 @@ export class RegisterComponent {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private usuarioService: UsuarioService) {
+    private usuarioService: UsuarioService,
+    private http: HttpClient) {
 
       this.registerFormGroup = this.formBuilder.group({
         nome: ['', [Validators.required]],
@@ -32,6 +35,7 @@ export class RegisterComponent {
       });
 
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   get registerForm() { return this.registerFormGroup.controls; }
@@ -46,7 +50,10 @@ export class RegisterComponent {
     }
 
     this.usuario = this.registerFormGroup.value;
-    this.usuarioService.create(this.usuario);
+    //this.usuarioService.create(this.usuario);
+    this.http.post('https://localhost:7285/Usuarios/Create',this.usuario);
+
+    this.usuarioCadastrado = "Usuário cadastrado com sucesso."
 
     /*if(this.registerForm['email'].value == "btcschool@btcschool.com")
         this.router.navigate([this.returnUrl]);
