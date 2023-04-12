@@ -1,0 +1,22 @@
+<p>home works!</p>
+
+<h3>Interpolation</h3>
+<h3>Quantidade bitcoins: {{valorBitcoin}}</h3>
+
+<h3>Property Binding</h3>
+<button class="btn btn-warning" [disabled]="valorBitcoin == 0">Buy</button><br>
+
+<h3> Event Binding</h3>
+<button class="btn btn-warning" (click)='addBitcoin()'>Add</button>
+<button class="btn btn-warning" (click)='delBitcoin()' [disabled]="valorBitcoin < 10" >Del</button><br>
+
+<h3>Two-way Binding</h3>
+
+<input type="text" (keyup)='KeyUp($event)' placeholder="Digite a criptomoeda"><br>
+<label>(KeyUp) A criptomoeda é : {{criptomoeda}}</label>
+
+<!--<input type="text" [ngModel]="criptomoeda" (ngModelChange)='criptomoeda = $event' placeholder="Digite a criptomoeda"><br>
+<label>(ngModelChange) A criptomoeda é : {{criptomoeda}}</label>-->
+
+<!--<input type="text" [(ngModel)]="criptomoeda" placeholder="Digite a criptomoeda"><br>
+<label class="{{criptomoeda}}">A criptomoeda é : {{criptomoeda}}</label>-->
