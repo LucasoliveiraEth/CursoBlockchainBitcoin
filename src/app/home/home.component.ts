@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent  {
-
-  public precoBitcoin : any;
+ 
   constructor(){}
   public valorBitcoin: number = 0;
   public criptomoeda: string = "";
