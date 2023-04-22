@@ -1,0 +1,18 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a href="https://btcschool.com.br/">
+      <div>
+        <img src="https://bitcoinschool.net.br/assets/images/logo-bitcoin-school-144x68.png" style="width:105px">
+      </div>
+    </a>
+  </div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+            <a [routerLink]="[menuItem.path]">
+                <i class="nc-icon {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
