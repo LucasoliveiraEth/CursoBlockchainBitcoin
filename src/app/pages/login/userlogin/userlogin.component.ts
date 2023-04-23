@@ -40,7 +40,10 @@ export class UserloginComponent implements OnInit {
      }
 
      if(this.loginForm['email'].value == "btcschool@btcschool.com")
-         this.router.navigate([this.returnUrl]);
+      {
+        localStorage.setItem('usuario', "usuariologado");
+        this.router.navigate([this.returnUrl]);
+      }
      else
         console.log("nope" + this.loginForm['email'].value);
   }

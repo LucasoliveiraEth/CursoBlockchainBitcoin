@@ -75,4 +75,10 @@ export class NavbarComponent implements OnInit{
     }
   }
 
+  logout()
+  {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login/userlogin']);
+  }
+
 }
