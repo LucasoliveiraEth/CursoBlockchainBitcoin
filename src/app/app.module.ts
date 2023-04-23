@@ -8,21 +8,29 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterModule } from './shared/footer/footer.module';
 import { AppRoutes } from './app.routing';
+import { LoginComponent } from './pages/login/login.component';
+import { UserloginComponent } from './pages/login/userlogin/userlogin.component';
+import { RegisterComponent } from './pages/login/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    LoginComponent,
+    UserloginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
-      useHash: true
+      useHash: false
     }),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
-    FooterModule
+    FooterModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

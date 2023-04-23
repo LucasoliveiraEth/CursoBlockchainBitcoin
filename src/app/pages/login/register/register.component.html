@@ -1,0 +1,88 @@
+<div class="row mt-4">
+
+	<div class="col-md-6 d-none d-md-block" style="height: 450px;">
+		<div class="text-center col-md-12 my-auto side-heder">
+			<h1>Crie sua conta</h1>
+			<img src="../../../../assets/img/logo-bitcoin-school-144x68.png" class="my-4" alt="" width="180px">
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<form class="p-1" [formGroup]="registerFormGroup">
+      <div class="pb-2 d-block d-md-none">
+        <h3 class="border-bottom">Crie sua conta</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input type="text" class="form-control"
+          placeholder="Nome"
+          formControlName="nome"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['nome'].touched) && registerForm['nome'].errors}"/>
+          <div *ngIf="registerForm['nome'].hasError('required')" class="invalid-feedback">
+            Nome não informado.
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input class="form-control" type="text"
+          placeholder="E-mail"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['email'].touched) && registerForm['email'].errors}"/>
+          <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
+            E-mail não informado.
+          </div>
+          <div *ngIf="registerForm['email'].hasError('email')" class="invalid-feedback">
+            E-mail inválido.
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input class="form-control" type="password"
+          placeholder="Senha"
+          formControlName="senha"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['senha'].touched) && registerForm['senha'].errors}"/>
+          <div *ngIf="registerForm['senha'].hasError('required')" class="invalid-feedback">
+            Senha não informada.
+          </div>
+          <div *ngIf="registerForm['senha'].hasError('minlength')" class="invalid-feedback">
+            Password precisa ter no minimo 5 caracteres.
+          </div>
+          <div *ngIf="registerForm['senha'].hasError('maxlength')" class="invalid-feedback">
+            Password precisa ter no máximo 10 caracteres.
+          </div>
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <input type="checkbox" name="checkboxConfirmacao"
+            formControlName="checkboxConfirmacao"
+            [(ngModel)]="checkboxConfirmacao">
+            Eu li e concordo com os <a routerLink="/termo"> Termos de Uso </a>e <a routerLink="/privacidade"> Política de Privacidade</a> do Serviço.
+          <div *ngIf="submitted && !checkboxConfirmacao">
+            <b style='color:red;'>Você precisa concordar com os termos de uso.</b>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12">
+          <button class="btn btn-lg btn-success btn-block px-4"
+          (click)="createuser()">
+            CADASTRE-SE
+          </button>
+          {{usuarioCadastrado}}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12">
+          <a class="btn btn-link btn-block" routerLink="/login/userlogin">
+            Já sou Cadastrado
+          </a>
+        </div>
+      </div>
+    </form>
+
+	</div>
+</div>
+

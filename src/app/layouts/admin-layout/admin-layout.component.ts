@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AdminLayoutComponent {
 
+  constructor(private router: Router){}
+  showMenu() :boolean
+  {
+    return this.router.url != '/login/userlogin' &&
+           this.router.url != '/login/register';
+
+  }
 }

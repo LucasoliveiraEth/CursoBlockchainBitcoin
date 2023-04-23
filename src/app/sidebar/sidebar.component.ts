@@ -8,8 +8,8 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard',     title: 'Dashboard',         icon:'nc-bank',       class: '' },
-  { path: '/user',          title: 'Perfil',      icon:'nc-single-02',  class: '' }
+  { path: '/dashboard',title: 'Dashboard',icon:'nc-bank',class: '' },
+  { path: '/user',title: 'Perfil',icon:'nc-single-02',class: '' }
 ];
 
 @Component({
@@ -18,10 +18,11 @@ export const ROUTES: RouteInfo[] = [
   templateUrl: 'sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {
-
   public menuItems: any[] | undefined;
+
+  constructor() { }
+
   ngOnInit(): void {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
-
 }
