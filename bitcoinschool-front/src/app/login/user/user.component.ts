@@ -18,7 +18,6 @@ export class UserComponent {
     private route: ActivatedRoute){
 
     this.loginFormGroup = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
     });
 
@@ -27,21 +26,15 @@ export class UserComponent {
 
   get loginForm() { return this.loginFormGroup.controls; }
 
-  realizarLogin(): void
+  criarCarteira(): void
   {
-    this.submitted = true;
+    /*this.submitted = true;
 
     if (this.loginFormGroup.invalid) {
       return;
-    }
+    }*/
 
-    if(this.loginForm['email'].value == "btcschool@btcschool.com")
-    {
-      localStorage.setItem('usuario', "usuariologado");
-      this.router.navigate([this.returnUrl]);
-    }
-    else
-      console.log("email não encontrado:" + this.loginForm['email'].value);
-    }
+    this.router.navigate(["/login/register"]);
+  }
 
 }

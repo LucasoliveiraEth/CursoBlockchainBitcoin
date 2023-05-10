@@ -16,6 +16,7 @@ import { UserComponent } from './login/user/user.component';
 import { RegisterComponent } from './login/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { WalletService } from './services/wallet.service';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -42,6 +43,7 @@ registerLocaleData(ptBr);
      // ************************************
      { provide: LOCALE_ID, useValue: 'pt' },
      // ************************************
+     WalletService
   ],
   bootstrap: [AppComponent]
 })
