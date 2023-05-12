@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,32 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserComponent {
 
-  returnUrl: string = "";
-  loginFormGroup! : FormGroup;
-  submitted = false;
-
-  constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute){
-
-    this.loginFormGroup = this.formBuilder.group({
-      senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
-    });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
-  get loginForm() { return this.loginFormGroup.controls; }
+  constructor(private router: Router){ }
 
   criarCarteira(): void
   {
-    /*this.submitted = true;
-
-    if (this.loginFormGroup.invalid) {
-      return;
-    }*/
-
     this.router.navigate(["/login/register"]);
   }
-
 }
