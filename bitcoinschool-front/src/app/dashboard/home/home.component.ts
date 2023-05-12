@@ -12,8 +12,9 @@ export class HomeComponent implements OnInit {
     private router: Router){}
 
   ngOnInit(): void {
-    const usuariologado = localStorage.getItem('usuario');
-    if(usuariologado != "usuariologado")
+    const usuariologado = localStorage.getItem('wallet');
+
+    if(!usuariologado)
     {
       this.router.navigate(['/login/user']);
     }

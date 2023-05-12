@@ -11,8 +11,9 @@ export class ContactComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const usuariologado = localStorage.getItem('usuario');
-    if(usuariologado != "usuariologado")
+    const usuariologado = localStorage.getItem('wallet');
+
+    if(!usuariologado)
     {
       this.route.navigate(['/login/user']);
     }
