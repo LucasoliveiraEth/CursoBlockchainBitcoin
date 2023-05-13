@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { WalletService } from './services/wallet.service';
 import { ImportComponent } from './login/import/import.component';
+import { ResponsiveVideoComponent } from './shared/responsive-video/responsive-video.component';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -31,7 +32,8 @@ registerLocaleData(ptBr);
     LoginComponent,
     UserComponent,
     RegisterComponent,
-    ImportComponent
+    ImportComponent,
+    ResponsiveVideoComponent
   ],
   imports: [
     BrowserModule,
