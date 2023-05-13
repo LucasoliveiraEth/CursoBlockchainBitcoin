@@ -3,10 +3,48 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-body">
-          <h1 class="card-title">Minha Timeline</h1>
+          <h5 class="card-title">BITCOINSCHOOL - PÁGINA INICIAL</h5>
           <hr>
           <div class="video-list">
-            <div class="video-item">
+            <div class="video-item" *ngFor="let content of contents">
+              <div class="video-details">
+                <h6 class="video-title">{{content.usuario}} - {{ content.titulo }}</h6>
+                <p class="video-description">{{ content.name }}</p>
+              </div>
+              <ng-container *ngIf="content.permission; else noPermission">
+                <ng-container *ngIf="content.type === 'video'">
+                  <figure>
+                    <div class="boxVideo">
+                        <iframe [src]="content.url"
+                        width="700" height="575" frameborder="0"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/10230706">Smarty aula 1</a> from <a href="http://vimeo.com/user3121269">kadunew.com/blog</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+                    </div>
+                    <!--<figcaption>{{ content.name }}</figcaption>-->
+                  </figure>
+                </ng-container>
+                <ng-container *ngIf="content.type === 'image'">
+                  <img [src]="content.url" alt="{{ content.name }}">
+                </ng-container>
+              </ng-container>
+              <ng-template #noPermission>
+                <ng-container *ngIf="content.type === 'video'">
+                  <p>Você não tem permissão para acessar este conteúdo de video. </p>
+                </ng-container>
+                <ng-container *ngIf="content.type === 'image'">
+                  <p>Você não tem permissão para acessar este conteúdo de imagem.</p>
+                </ng-container>
+              </ng-template>
+              <hr>
+              <!--<div class="video-thumbnail">
+                <img src="https://via.placeholder.com/400x225.png?text=Thumbnail" alt="Thumbnail">
+              </div>
+              <div class="video-details">
+                <h2 class="video-title">Título do vídeo</h2>
+                <p class="video-description">Descrição do vídeo</p>
+              </div>-->
+
+            </div>
+            <!--<div class="video-item">
               <div class="video-thumbnail">
                 <img src="https://via.placeholder.com/400x225.png?text=Thumbnail" alt="Thumbnail">
               </div>
@@ -15,17 +53,7 @@
                 <p class="video-description">Descrição do vídeo</p>
                 <a href="#" class="btn btn-primary">Assistir</a>
               </div>
-            </div>
-            <div class="video-item">
-              <div class="video-thumbnail">
-                <img src="https://via.placeholder.com/400x225.png?text=Thumbnail" alt="Thumbnail">
-              </div>
-              <div class="video-details">
-                <h2 class="video-title">Título do vídeo</h2>
-                <p class="video-description">Descrição do vídeo</p>
-                <a href="#" class="btn btn-primary">Assistir</a>
-              </div>
-            </div>
+            </div>-->
             <!-- Adicione mais itens de vídeo aqui -->
           </div>
         </div>
