@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public precoBitcoin : any;
+  wallet!: string | null;
   constructor(private http: HttpClient,
     private router: Router){}
 
   ngOnInit(): void {
-    const usuariologado = localStorage.getItem('usuario');
-    if(usuariologado != "usuariologado")
+    this.wallet = localStorage.getItem('wallet');
+
+    if(!this.wallet)
     {
       this.router.navigate(['/login/user']);
     }

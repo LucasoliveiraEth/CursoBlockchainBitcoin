@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { WalletService } from 'src/app/services/wallet.service';
+import { CreateWalletRequest } from 'src/models/CreateWalletRequest';
+import { Wallet } from 'src/models/Wallet';
 
 @Component({
   selector: 'app-register',
@@ -9,22 +12,21 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  usuario: any;
   returnUrl: string = "";
   registerFormGroup! : FormGroup;
   submitted = false;
-  usuarioCadastrado = "";
   checkboxConfirmacao = false;
+  request = new CreateWalletRequest();
+  wallet = new Wallet();
+  seedPhrase: Array<string> | undefined;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService) {
-
+    private toastr: ToastrService,
+    private router: Router,
+    private walletService: WalletService) {
       this.registerFormGroup = this.formBuilder.group({
-        nome: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+        password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         checkboxConfirmacao : [undefined, Validators.required]
       });
 
@@ -37,39 +39,36 @@ export class RegisterComponent {
    {
      this.submitted = true;
 
-     // stop here if form is invalid
      if (this.registerFormGroup.invalid) {
        return;
      }
 
-     /*
-     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+     this.request.Password = this.registerForm['password'].value;
 
-     this.usuario = this.registerFormGroup.value;
-     //this.usuarioService.create(this.usuario);
-     //this.http.post('https://localhost:7285/Usuarios/Create',this.usuario);
-
-     this.http.post('https://localhost:7285/Usuarios/Create', this.usuario,
-     { headers })
-     .subscribe(data => {
-       this.usuario = data;
-       console.log(data);
-     });
-
-     this.usuarioCadastrado = "Usuário cadastrado com sucesso."
-    */
-
-     if(this.checkboxConfirmacao && this.registerForm['email'].value == "btcschool@btcschool.com")
+     if(this.checkboxConfirmacao && this.registerForm['password'].value != "")
      {
-        localStorage.setItem('usuario', "usuariologado");
-        this.toastr.success('Usuário cadastrado com sucesso!');
-        this.router.navigate([this.returnUrl]);
+        this.walletService.create(this.request)
+        .subscribe({
+          next: (response) => {
+            this.wallet = response
+            this.seedPhrase = this.wallet.seedPhrase.split(' ').filter((x) => x);
+          },
+          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+        })
      }
      else
      {
-        this.toastr.error('Email deve ser do dominio btcschool.com!');
+        this.toastr.error('Você deve concordar com os termos!');
      }
   }
 
-
+  confirmUser()
+  {
+    localStorage.setItem('wallet', this.wallet.publicKey);
+    this.toastr.success('Carteira conectada!');
+    this.router.navigate([this.returnUrl]);
+  }
 }
+
+
+

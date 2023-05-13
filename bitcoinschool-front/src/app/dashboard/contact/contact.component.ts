@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './contact.component.html'
 })
 export class ContactComponent implements OnInit{
-  constructor(private route: Router) {
 
-  }
+  wallet!: string | null;
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
-    const usuariologado = localStorage.getItem('usuario');
-    if(usuariologado != "usuariologado")
+    this.wallet = localStorage.getItem('wallet');
+
+    if(!this.wallet)
     {
       this.route.navigate(['/login/user']);
     }

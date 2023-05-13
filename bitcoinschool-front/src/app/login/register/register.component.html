@@ -2,54 +2,32 @@
 
   <div class="col-md-6 d-none d-md-block" style="height: 450px;">
     <div class="text-center col-md-12 my-auto side-heder">
-      <h1>Crie sua conta</h1>
+      <h3>Bem-vindo(a) a BITCOINSCHOOL</h3>
       <img src="../../../../assets/img/logo-bitcoin-school-144x68.png" class="my-4" alt="" width="180px">
     </div>
   </div>
-
   <div class="col-md-6">
-    <form class="p-1" [formGroup]="registerFormGroup">
-      <div class="pb-2 d-block d-md-none">
-        <h3 class="border-bottom">Crie sua conta</h3>
+    <form class="p-1" [formGroup]="registerFormGroup" *ngIf="!wallet.publicKey">
+      <div>
+        <h3>Criar senha</h3>
+        <h6>Essa senha desbloqueará sua carteira BitcoinSchool apenas neste dispositivo. A BitcoinSchool não é capaz de recuperar essa senha.</h6>
       </div>
-      <div class="form-row">
-        <div class="form-group col-sm-6">
-          <input type="text" class="form-control"
-          placeholder="Nome"
-          formControlName="nome"
-          [ngClass]="{ 'is-invalid':  (submitted || registerForm['nome'].touched) && registerForm['nome'].errors}"/>
-          <div *ngIf="registerForm['nome'].hasError('required')" class="invalid-feedback">
-            Nome não informado.
-          </div>
-        </div>
-      </div><br>
-      <div class="form-row">
-        <div class="form-group col-sm-6">
-          <input class="form-control" type="text"
-          placeholder="E-mail"
-          formControlName="email"
-          [ngClass]="{ 'is-invalid':  (submitted || registerForm['email'].touched) && registerForm['email'].errors}"/>
-          <div *ngIf="registerForm['email'].hasError('required')" class="invalid-feedback">
-            E-mail não informado.
-          </div>
-          <div *ngIf="registerForm['email'].hasError('email')" class="invalid-feedback">
-            E-mail inválido.
-          </div>
-        </div>
-      </div><br>
+      <div class="pb-2 d-block d-md-none">
+        <h3 class="border-bottom">Crie sua senha</h3>
+      </div>
       <div class="form-row">
         <div class="form-group col-sm-6">
           <input class="form-control" type="password"
           placeholder="Senha"
-          formControlName="senha"
-          [ngClass]="{ 'is-invalid':  (submitted || registerForm['senha'].touched) && registerForm['senha'].errors}"/>
-          <div *ngIf="registerForm['senha'].hasError('required')" class="invalid-feedback">
+          formControlName="password"
+          [ngClass]="{ 'is-invalid':  (submitted || registerForm['password'].touched) && registerForm['password'].errors}"/>
+          <div *ngIf="registerForm['password'].hasError('required')" class="invalid-feedback">
             Senha não informada.
           </div>
-          <div *ngIf="registerForm['senha'].hasError('minlength')" class="invalid-feedback">
+          <div *ngIf="registerForm['password'].hasError('minlength')" class="invalid-feedback">
             Password precisa ter no minimo 5 caracteres.
           </div>
-          <div *ngIf="registerForm['senha'].hasError('maxlength')" class="invalid-feedback">
+          <div *ngIf="registerForm['password'].hasError('maxlength')" class="invalid-feedback">
             Password precisa ter no máximo 10 caracteres.
           </div>
         </div>
@@ -65,23 +43,42 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="form-row">
         <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-4"
+          <button class="btn btn-warning btn-lg btn-block"
           (click)="createuser()">
-            CADASTRE-SE
+            Criar nova carteira
           </button>
-          {{usuarioCadastrado}}
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-12">
-          <a class="btn btn-link btn-block" routerLink="/login/user">
-            Já sou Cadastrado
-          </a>
         </div>
       </div>
     </form>
+    <form class="p-1" *ngIf="wallet.publicKey">
+      <div>
+        <h3>Anote sua Frase de Recuperação Secreta</h3>
+        <h6>Guarde-a em um lugar de sua confiança ao qual somente você tenha acesso.</h6>
+        <h6>Salve em um gerenciador de senhas, cofre de banco e anote em vários locais secretos.</h6>
+      </div><br>
+        <div class="form-group">
+          <div class="row">
+               <div class="col-xl-4" *ngFor="let word of seedPhrase; let index = index">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">{{index + 1}}.</div>
+                  </div>
+                  <input type="text" class="form-control" value={{word}}/>
+                </div><br>
+              </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-12">
+            <button class="btn btn-warning btn-lg btn-block"
+            (click)="confirmUser()">
+              Confirmar
+            </button>
+          </div>
+        </div>
+    </form>
   </div>
 </div>
-

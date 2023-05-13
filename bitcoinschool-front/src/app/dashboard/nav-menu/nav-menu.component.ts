@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 export class NavMenuComponent {
   isExpanded = false;
 
-  constructor(private route: Router) {
+  constructor(private route: Router,
+    private toastr: ToastrService) {
 
   }
 
@@ -18,5 +20,11 @@ export class NavMenuComponent {
 
   showMenu() : boolean {
      return this.route.url != "/login/user" && this.route.url != "/login/register";
+  }
+
+  desconectar()
+  {
+    localStorage.removeItem('wallet');
+    this.toastr.success('Carteira desconectada!');
   }
 }

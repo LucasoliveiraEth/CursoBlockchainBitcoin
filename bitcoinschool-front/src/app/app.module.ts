@@ -16,6 +16,8 @@ import { UserComponent } from './login/user/user.component';
 import { RegisterComponent } from './login/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { WalletService } from './services/wallet.service';
+import { ImportComponent } from './login/import/import.component';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -28,7 +30,8 @@ registerLocaleData(ptBr);
     NavMenuComponent,
     LoginComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    ImportComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ registerLocaleData(ptBr);
      // ************************************
      { provide: LOCALE_ID, useValue: 'pt' },
      // ************************************
+     WalletService
   ],
   bootstrap: [AppComponent]
 })
