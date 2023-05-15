@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WalletService } from 'src/app/services/wallet.service';
+import { RestoreWalletRequest } from 'src/models/RestoreWalletRequest';
+import { Wallet } from 'src/models/Wallet';
 
 @Component({
   selector: 'app-import',
@@ -15,6 +17,8 @@ export class ImportComponent {
   checkboxConfirmacao = false;
   seedForm: FormGroup;
   registerFormGroup : FormGroup;
+  request = new RestoreWalletRequest();
+  wallet = new Wallet();
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -40,8 +44,7 @@ export class ImportComponent {
     return this.seedForm.get('seedWords') as FormArray;
   }
 
-
-  importuser()
+  restorewallet()
   {
     this.submitted = true;
 
@@ -49,11 +52,35 @@ export class ImportComponent {
        return;
      }
 
-    const seedPhraseValues: string[] = this.seedWords.controls.map(control => control.value);
-    const seedPhraseString: string = seedPhraseValues.join(' ');
-    console.log("SeedPhrase:/" + seedPhraseString + "/");
-    console.log("Passwword: " + this.registerForm['password'].value);
+     const seedPhraseValues: string[] = this.seedWords.controls.map(control => control.value);
+     const seedPhraseString: string = seedPhraseValues.join(' ');
+     //console.log("SeedPhrase:/" + seedPhraseString + "/");
+     //console.log("Passwword: " + this.registerForm['password'].value);
 
+     this.request.Password = this.registerForm['password'].value;
+     this.request.SeedPhrase = seedPhraseString;
+
+     if(this.checkboxConfirmacao && this.registerForm['password'].value != "")
+     {
+        this.walletService.restore(this.request)
+        .subscribe({
+          next: (response) => {
+            this.wallet = response
+          },
+          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+        });
+
+        console.log('carteira: ' + this.wallet.publicKey);
+        if(this.wallet.publicKey)
+        {
+          localStorage.setItem('wallet', this.wallet.publicKey);
+          this.toastr.success('Carteira conectada!');
+          this.router.navigate([this.returnUrl]);
+        }
+     }
+     else
+     {
+        this.toastr.error('Você deve concordar com os termos!');
+     }
   }
-
 }

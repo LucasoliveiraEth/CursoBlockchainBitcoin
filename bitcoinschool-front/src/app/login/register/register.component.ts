@@ -35,7 +35,7 @@ export class RegisterComponent {
 
   get registerForm() { return this.registerFormGroup.controls; }
 
-   createuser()
+   createwallet()
    {
      this.submitted = true;
 
