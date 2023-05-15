@@ -7,13 +7,10 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./import.component.scss']
 })
 export class ImportComponent {
-
   submitted = false;
   checkboxConfirmacao = false;
-
   seedForm: FormGroup;
   registerFormGroup : FormGroup;
-
 
   constructor(private formBuilder: FormBuilder) {
 
