@@ -66,17 +66,16 @@ export class ImportComponent {
         .subscribe({
           next: (response) => {
             this.wallet = response
+            console.log('carteira: ' + this.wallet.publicKey);
+            if(this.wallet.publicKey)
+            {
+              localStorage.setItem('wallet', this.wallet.publicKey);
+              this.toastr.success('Carteira conectada!');
+              this.router.navigate([this.returnUrl]);
+            }
           },
           error: (error) => console.log("Ocorreu erro na requisição:" + error)
         });
-
-        console.log('carteira: ' + this.wallet.publicKey);
-        if(this.wallet.publicKey)
-        {
-          localStorage.setItem('wallet', this.wallet.publicKey);
-          this.toastr.success('Carteira conectada!');
-          this.router.navigate([this.returnUrl]);
-        }
      }
      else
      {
