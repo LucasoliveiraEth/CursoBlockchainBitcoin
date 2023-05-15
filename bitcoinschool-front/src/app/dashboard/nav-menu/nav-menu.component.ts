@@ -20,7 +20,9 @@ export class NavMenuComponent {
   }
 
   showMenu() : boolean {
-     return this.route.url != "/login/user" && this.route.url != "/login/register";
+     return this.route.url != "/login/user" &&
+            this.route.url != "/login/register" &&
+            this.route.url != "/login/import";
   }
 
   desconectar()

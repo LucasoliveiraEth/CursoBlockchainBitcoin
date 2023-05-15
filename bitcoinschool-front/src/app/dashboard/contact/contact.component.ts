@@ -30,7 +30,7 @@ export class ContactComponent implements OnInit{
       name: 'Blockchain & Criptomoeda. Desde os fundamentos da tecnologia até as aplicações práticas, nossos cursos abrangem todos os aspectos da área que mais inova no mundo.',
       type: 'image',
       url: 'https://promocao.btcschool.com.br/wp-content/uploads/2023/05/caio-carlos.png',
-      permission: true
+      permission: false
     },
     {
       id: 3,

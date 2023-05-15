@@ -20,6 +20,7 @@ import { WalletService } from './services/wallet.service';
 import { ImportComponent } from './login/import/import.component';
 import { ResponsiveVideoComponent } from './shared/responsive-video/responsive-video.component';
 
+
 registerLocaleData(ptBr);
 // **************************************************
 
@@ -42,6 +43,7 @@ registerLocaleData(ptBr);
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()
+
   ],
   providers: [
      // ************************************
