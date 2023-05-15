@@ -1,5 +1,4 @@
 <div class="row mt-4">
-
   <div class="col-md-6 d-none d-md-block" style="height: 450px;">
     <div class="text-center col-md-12 my-auto side-heder">
       <h3>Bem-vindo(a) a BITCOINSCHOOL</h3>
@@ -19,31 +18,16 @@
           <div class="input-group-prepend">
             <div class="input-group-text">{{i + 1}}.</div>
           </div>
-          <input type="text" [formControlName]="i" [placeholder]="'Word ' + (i + 1)" class="form-control">
-          <div *ngIf="wordControl.hasError('required') && (wordControl.dirty || wordControl.touched)"
-               class="text-danger">
-            Seed phrase word is required.
-          </div>
+          <input class="form-control" type="text"
+          [formControlName]="i"
+          [placeholder]="'Word ' + (i + 1)"
+          [ngClass]="{ 'is-invalid':  (submitted || wordControl.touched) && wordControl.hasError('required')}">
         </div><br>
         </div>
       </div>
     </form>
-
     <form class="p-1" [formGroup]="registerFormGroup">
-        <!--<div class="form-group">
-        <div class="row">
-             <div class="col-xl-4" *ngFor="let word of numberOfWords; let index = index">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">{{index + 1}}.</div>
-                </div>
-                <input class="form-control" type="text"
-                placeholder="{{word}}"
-                formControlName="{{word}}"/>
-              </div><br>
-            </div>
-        </div>-->
-        <div class="form-row">
+          <div class="form-row">
             <div class="form-group col-sm-6">
               <input class="form-control" type="password"
               placeholder="Senha"
@@ -75,7 +59,8 @@
         <br>
         <div class="form-row">
           <div class="form-group col-12">
-            <button class="btn btn-warning btn-lg btn-block">
+            <button class="btn btn-warning btn-lg btn-block"
+            (click)="importuser()">
               Confirmar
             </button>
           </div>
