@@ -54,8 +54,6 @@ export class ImportComponent {
 
      const seedPhraseValues: string[] = this.seedWords.controls.map(control => control.value);
      const seedPhraseString: string = seedPhraseValues.join(' ');
-     //console.log("SeedPhrase:/" + seedPhraseString + "/");
-     //console.log("Passwword: " + this.registerForm['password'].value);
 
      this.request.Password = this.registerForm['password'].value;
      this.request.SeedPhrase = seedPhraseString;
