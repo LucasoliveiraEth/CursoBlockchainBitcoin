@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit{
       name: 'Olá, pessoal! Nesta live super interessante, vamos falar sobre um tema que tem impacto direto na economia brasileira: macroeconomia e o dólar.Para ajudar a entender melhor esses temas, teremos a participação especial do especialista em macroeconomia Roberto Morra da Genial Investimentos, que vai nos ajudar a entender as tendências do mercado, a relação entre o dólar e a economia brasileira e os impactos das políticas macroeconômicas no cenário atual.Durante a transmissão, vamos discutir sobre as causas e consequências da volatilidade do dólar no mercado brasileiro, as estratégias de proteção cambial para empresas e investidores, as perspectivas para a economia brasileira e os desafios que o país enfrenta em meio à crise econômica mundial.',
       type: 'video',
       url: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/vukRobY1zs8?list=PL1jfYGaIL3SM0SjWYgOjltW_FX8Trv_7X'),
-      permission: false
+      permission: true
     },
     {
       id: 2,

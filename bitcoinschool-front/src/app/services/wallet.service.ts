@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Balance } from 'src/models/Balance';
 import { CreateWalletRequest } from 'src/models/CreateWalletRequest';
 import { RestoreWalletRequest } from 'src/models/RestoreWalletRequest';
 import { Wallet } from 'src/models/Wallet';
@@ -20,6 +21,10 @@ export class WalletService {
 
   restore(restoreWalletRequest: RestoreWalletRequest): Observable<Wallet> {
     return this.http.post<Wallet>(this.apiUrl + "/restore", restoreWalletRequest);
+  }
+
+  balance(wallet : string): Observable<Balance> {
+    return this.http.get<Balance>(this.apiUrl + "/balance?wallet=" + wallet);
   }
 
 }

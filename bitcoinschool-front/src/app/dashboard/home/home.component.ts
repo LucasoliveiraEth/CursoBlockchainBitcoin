@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public precoBitcoin : any;
+  public balanceBitcoin : any;
   wallet!: string | null;
+
   constructor(private http: HttpClient,
-    private router: Router){}
+    private router: Router,
+    private walletService: WalletService){}
 
   ngOnInit(): void {
     this.wallet = localStorage.getItem('wallet');
+
+    const walletLogada: string = this.wallet ?? "";
 
     if(!this.wallet)
     {
@@ -22,5 +28,13 @@ export class HomeComponent implements OnInit {
 
     this.precoBitcoin = this.http.get('https://www.mercadobitcoin.net/api/BTC/ticker')
     .subscribe(response => this.precoBitcoin = response)
+
+    this.walletService.balance(walletLogada)
+        .subscribe({
+          next: (response) => {
+            this.balanceBitcoin = response
+          },
+          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+        })
   }
 }
