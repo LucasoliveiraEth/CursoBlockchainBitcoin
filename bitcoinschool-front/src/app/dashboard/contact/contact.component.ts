@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class ContactComponent implements OnInit{
 
   wallet!: string | null;
+  user!: string | null;
+
   @Input()
   videoSrc!: string;
 
@@ -30,7 +32,7 @@ export class ContactComponent implements OnInit{
       name: 'Blockchain & Criptomoeda. Desde os fundamentos da tecnologia até as aplicações práticas, nossos cursos abrangem todos os aspectos da área que mais inova no mundo.',
       type: 'image',
       url: 'https://promocao.btcschool.com.br/wp-content/uploads/2023/05/caio-carlos.png',
-      permission: false
+      permission: true
     },
     {
       id: 3,
@@ -49,8 +51,9 @@ export class ContactComponent implements OnInit{
 
   ngOnInit(): void {
     this.wallet = localStorage.getItem('wallet');
+    this.user = localStorage.getItem('user');
 
-    if(!this.wallet)
+    if(!this.wallet || !this.user)
     {
       this.route.navigate(['/login/user']);
     }

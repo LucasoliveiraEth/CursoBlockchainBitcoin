@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   public precoBitcoin : any;
   public balanceBitcoin : any;
   wallet!: string | null;
+  user!: string | null;
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -18,10 +19,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.wallet = localStorage.getItem('wallet');
+    this.user = localStorage.getItem('user');
 
     const walletLogada: string = this.wallet ?? "";
 
-    if(!this.wallet)
+    if(!this.wallet || !this.user)
     {
       this.router.navigate(['/login/user']);
     }

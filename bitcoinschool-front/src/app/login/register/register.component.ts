@@ -35,7 +35,7 @@ export class RegisterComponent {
 
   get registerForm() { return this.registerFormGroup.controls; }
 
-   createwallet()
+   async createwallet()
    {
      this.submitted = true;
 
@@ -48,13 +48,13 @@ export class RegisterComponent {
      if(this.checkboxConfirmacao && this.registerForm['password'].value != "")
      {
         this.walletService.create(this.request)
-        .subscribe({
-          next: (response) => {
-            this.wallet = response
-            this.seedPhrase = this.wallet.seedPhrase.split(' ').filter((x) => x);
-          },
-          error: (error) => console.log("Ocorreu erro na requisição:" + error)
-        })
+         .subscribe({
+           next: (response) => {
+             this.wallet = response;
+             this.seedPhrase = this.wallet.seedPhrase.split(' ').filter((x) => x);
+           },
+           error: (error) => console.log("Ocorreu erro na requisição:" + error)
+         })
      }
      else
      {
@@ -65,6 +65,7 @@ export class RegisterComponent {
   confirmUser()
   {
     localStorage.setItem('wallet', this.wallet.publicKey);
+    localStorage.setItem('user', this.wallet.userCode);
     this.toastr.success('Carteira conectada!');
     this.router.navigate([this.returnUrl]);
   }

@@ -68,6 +68,7 @@ export class ImportComponent {
             if(this.wallet.publicKey)
             {
               localStorage.setItem('wallet', this.wallet.publicKey);
+              localStorage.setItem('user', this.wallet.userCode);
               this.toastr.success('Carteira conectada!');
               this.router.navigate([this.returnUrl]);
             }
