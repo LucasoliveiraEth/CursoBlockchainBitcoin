@@ -1,0 +1,38 @@
+<div class="container" style="padding-top: 70px;">
+<form class="p-1" [formGroup]="profileFormGroup">
+  <div>
+    <h3>Perfil</h3>
+    <h6>Defina seu usuário e uma descrição em poucas palavras sobre você.</h6>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <input class="form-control" type="text"
+      placeholder="Username"
+      formControlName="username"
+      [ngClass]="{ 'is-invalid':  (submitted || profileForm['username'].touched) && profileForm['username'].errors}"/>
+      <div *ngIf="profileForm['username'].hasError('required')" class="invalid-feedback">
+        UserName não informado.
+      </div>
+    </div>
+    <br>
+    <div class="form-group col-sm-6">
+      <input class="form-control" type="text"
+      placeholder="Descrição"
+      formControlName="description"
+      [ngClass]="{ 'is-invalid':  (submitted || profileForm['description'].touched) && profileForm['description'].errors}"/>
+      <div *ngIf="profileForm['description'].hasError('required')" class="invalid-feedback">
+        Descrição não informada.
+      </div>
+    </div>
+  </div><br>
+  <br>
+  <div class="form-row">
+    <div class="form-group col-12">
+      <button class="btn btn-warning btn-lg btn-block"
+      (click)="updateprofile()">
+        Atualizar
+      </button>
+    </div>
+  </div>
+</form>
+</div>

@@ -1,46 +1,5 @@
 <div class="container" style="padding-top: 70px;">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">BITCOINSCHOOL - PÁGINA INICIAL</h5>
-          <hr>
-          <div class="video-list">
-            <div class="video-item" *ngFor="let content of contents">
-              <div class="video-details">
-                <h6 class="video-title">{{content.usuario}} - {{ content.titulo }}</h6>
-                <p class="video-description">{{ content.name }}</p>
-              </div>
-              <ng-container *ngIf="content.permission; else noPermission">
-                <ng-container *ngIf="content.type === 'video'">
-                  <figure>
-                    <div class="boxVideo">
-                        <iframe [src]="content.url"
-                        width="700" height="575" frameborder="0"
-                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                    <!--<figcaption>{{ content.name }}</figcaption>-->
-                  </figure>
-                </ng-container>
-                <ng-container *ngIf="content.type === 'image'">
-                  <img class = "imageSize" [src]="content.url" alt="{{ content.name }}">
-                </ng-container>
-              </ng-container>
-              <ng-template #noPermission>
-                <ng-container *ngIf="content.type === 'video'">
-                  <p>Você não tem permissão para acessar este conteúdo de video. </p>
-                  <img class = "imageSize" src="https://img.olhardigital.com.br/wp-content/uploads/2017/02/20170209171343.jpg" alt="Você não tem permissão para acessar este conteúdo de video.">
-                </ng-container>
-                <ng-container *ngIf="content.type === 'image'">
-                  <p>Você não tem permissão para acessar este conteúdo de imagem.</p>
-                  <img class = "imageSize" src="https://cdn.shrm.org/image/upload/c_crop,h_430,w_765,x_0,y_0/c_fit,f_auto,q_auto,w_767/v1/HRPS/Blog/EN_iStock_cybersecurity_8-3-21_nwqskk?databtoa=eyIxNng5Ijp7IngiOjAsInkiOjAsIngyIjo3NjUsInkyIjo0MzAsInciOjc2NSwiaCI6NDMwfX0%3D" alt="Você não tem permissão para acessar este conteúdo de imagem.">
-                </ng-container>
-              </ng-template>
-              <hr>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <p>Site: https://btcschool.com.br/</p>
+  <p>E-mail: contato@btcschool.com.br</p>
+  <p>Whatsapp: (021) 999616281</p>
 </div>

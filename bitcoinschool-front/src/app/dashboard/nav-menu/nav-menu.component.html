@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top" *ngIf="showMenu()">
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">AngularApp</a>
+      <a class="navbar-brand" [routerLink]="['/']">
+        <img src="https://bitcoinschool.net.br/assets/images/logo-bitcoin-school-144x68.png" width="85px" height="40px"/>
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -22,7 +24,13 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/contact']">Contact</a>
+            <a class="nav-link text-dark" [routerLink]="['/content']">Conteúdos</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/profile']">Perfil</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/contact']">Contato</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/login/user']" (click)="desconectar()">Desconectar</a>

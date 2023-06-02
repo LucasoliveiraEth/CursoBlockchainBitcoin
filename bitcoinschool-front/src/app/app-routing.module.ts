@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './login/user/user.component';
 import { RegisterComponent } from './login/register/register.component';
 import { ImportComponent } from './login/import/import.component';
+import { ContentComponent } from './dashboard/content/content.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,8 @@ const routes: Routes = [
     ]
   },
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'content', component: ContentComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent }
 ];
 
