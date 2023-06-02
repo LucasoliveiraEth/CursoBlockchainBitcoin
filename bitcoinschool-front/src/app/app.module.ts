@@ -21,6 +21,7 @@ import { ImportComponent } from './login/import/import.component';
 import { ResponsiveVideoComponent } from './shared/responsive-video/responsive-video.component';
 import { ContentComponent } from './dashboard/content/content.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { UserService } from './services/user.service';
 
 
 registerLocaleData(ptBr);
@@ -53,7 +54,8 @@ registerLocaleData(ptBr);
      // ************************************
      { provide: LOCALE_ID, useValue: 'pt' },
      // ************************************
-     WalletService
+     WalletService,
+     UserService
   ],
   bootstrap: [AppComponent]
 })

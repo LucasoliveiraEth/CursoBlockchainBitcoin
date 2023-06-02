@@ -7,16 +7,18 @@
   <div class="form-row">
     <div class="form-group col-sm-6">
       <input class="form-control" type="text"
+      [value]="profile?.userName"
       placeholder="Username"
-      formControlName="username"
-      [ngClass]="{ 'is-invalid':  (submitted || profileForm['username'].touched) && profileForm['username'].errors}"/>
-      <div *ngIf="profileForm['username'].hasError('required')" class="invalid-feedback">
+      formControlName="userName"
+      [ngClass]="{ 'is-invalid':  (submitted || profileForm['userName'].touched) && profileForm['userName'].errors}"/>
+      <div *ngIf="profileForm['userName'].hasError('required')" class="invalid-feedback">
         UserName não informado.
       </div>
     </div>
     <br>
     <div class="form-group col-sm-6">
       <input class="form-control" type="text"
+      [value]="profile?.description"
       placeholder="Descrição"
       formControlName="description"
       [ngClass]="{ 'is-invalid':  (submitted || profileForm['description'].touched) && profileForm['description'].errors}"/>
