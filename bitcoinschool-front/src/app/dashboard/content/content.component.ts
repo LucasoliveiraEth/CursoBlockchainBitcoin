@@ -61,4 +61,9 @@ export class ContentComponent implements OnInit {
       this.route.navigate(['/login/user']);
     }
   }
+
+  comprar(item: any)
+  {
+    console.log('Preço do item:' + item.price + ". Dono: " + item.usuario);
+  }
 }

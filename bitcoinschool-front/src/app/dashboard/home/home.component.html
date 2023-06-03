@@ -1,6 +1,13 @@
 <div class="container" style="padding-top: 70px;">
   <p>Seu Endereço: {{wallet}}</p>
-  <p>Saldo: {{balanceBitcoin.balance}}</p>
-  <p>Cotação do Bitcoin: {{precoBitcoin.ticker.last | currency: 'BRL'}}</p>
+
+  <div *ngIf="carregando">
+    <img src="../../../assets/img/carregando.gif" width="150px" height="100px"/>
+  </div>
+  <div *ngIf="!carregando">
+    <p>Saldo: {{balanceBitcoin?.balance}}</p>
+    <p>Cotação do Bitcoin: {{precoBitcoin.ticker?.last | currency: 'BRL'}}</p>
+  </div>
+
 </div>
 
