@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProfileRequest } from 'src/models/ProfileRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,9 @@ export class UserService {
   profile(userCode : string): Observable<any> {
     return this.http.get<any>(this.apiUrl + "/profile?userCode=" + userCode);
   }
+
+  updateprofile(profileRequest : ProfileRequest) {
+    return this.http.put(this.apiUrl + "/updateprofile", profileRequest);
+  }
+
 }

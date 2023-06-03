@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
+import { ProfileRequest } from 'src/models/ProfileRequest';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit{
   profile : any;
-
+  request = new ProfileRequest();
   profileFormGroup! : FormGroup;
   submitted = false;
 
@@ -30,11 +31,10 @@ export class ProfileComponent implements OnInit{
         .subscribe({
           next: (response) => {
             this.profile = response
-            //console.log('Pegou:' + this.profile.userName);
             this.initializeForm();
           },
           error: (error) => console.log("Ocorreu erro na requisição:" + error)
-        })
+    })
   }
 
   get profileForm() { return this.profileFormGroup.controls; }
@@ -45,5 +45,26 @@ export class ProfileComponent implements OnInit{
       description:  [this.profile.description]
     });
   }
-  updateprofile(){}
+  updateprofile(){
+
+    this.submitted = true;
+
+    if (this.profileFormGroup.invalid) {
+      return;
+    }
+    this.request.UserCode = localStorage.getItem('user') ?? "";
+    this.request.UserName = this.profileForm['userName'].value;
+    this.request.Description = this.profileForm['description'].value;
+
+    this.userService.updateprofile(this.request)
+        .subscribe({
+          next: () => {
+            this.toastr.success('Perfil atualizado com sucesso!');
+          },
+          error: (error) => {
+            console.log("Ocorreu erro na requisição:" + error);
+            this.toastr.error('Não foi possivel salvar os dados!');
+          }
+    })
+  }
 }
