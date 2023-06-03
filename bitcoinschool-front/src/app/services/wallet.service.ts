@@ -11,7 +11,7 @@ import { Wallet } from 'src/models/Wallet';
 })
 export class WalletService {
 
-  private apiUrl = 'https://localhost:7094/Wallet';
+  private apiUrl = 'https://localhost:7248/Wallet';
 
   constructor(private http: HttpClient) { }
 
