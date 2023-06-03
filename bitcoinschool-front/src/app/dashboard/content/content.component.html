@@ -29,10 +29,26 @@
               <ng-template #noPermission>
                 <ng-container *ngIf="content.type === 'video'">
                   <p>Você não tem permissão para acessar este conteúdo de video. </p>
+                  <div class="comprar">
+                    <p>Adquira agora por <b>{{ content.price }}</b></p>
+                    <button class="btn btn-warning">
+                      <i class="fab fa-bitcoin"></i>
+                      Comprar
+                    </button>
+                  </div>
+                  <br>
                   <img class = "imageSize" src="https://img.olhardigital.com.br/wp-content/uploads/2017/02/20170209171343.jpg" alt="Você não tem permissão para acessar este conteúdo de video.">
                 </ng-container>
                 <ng-container *ngIf="content.type === 'image'">
                   <p>Você não tem permissão para acessar este conteúdo de imagem.</p>
+                  <div class="comprar">
+                    <p>Adquira agora por <b>{{ content.price }}</b></p>
+                    <button class="btn btn-warning">
+                      <i class="fab fa-bitcoin"></i>
+                      Comprar
+                    </button>
+                </div>
+                <br>
                   <img class = "imageSize" src="https://cdn.shrm.org/image/upload/c_crop,h_430,w_765,x_0,y_0/c_fit,f_auto,q_auto,w_767/v1/HRPS/Blog/EN_iStock_cybersecurity_8-3-21_nwqskk?databtoa=eyIxNng5Ijp7IngiOjAsInkiOjAsIngyIjo3NjUsInkyIjo0MzAsInciOjc2NSwiaCI6NDMwfX0%3D" alt="Você não tem permissão para acessar este conteúdo de imagem.">
                 </ng-container>
               </ng-template>

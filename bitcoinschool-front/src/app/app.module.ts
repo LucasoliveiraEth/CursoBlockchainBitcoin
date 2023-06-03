@@ -22,7 +22,8 @@ import { ResponsiveVideoComponent } from './shared/responsive-video/responsive-v
 import { ContentComponent } from './dashboard/content/content.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { UserService } from './services/user.service';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -47,8 +48,9 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
      // ************************************
