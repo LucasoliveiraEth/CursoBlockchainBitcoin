@@ -1,2 +1,3 @@
 <p>Seu Endereço: {{wallet}}</p>
-<p>Cotação do Bitcoin: {{precoBitcoin.ticker.last | currency: 'BRL'}}</p>
+<p>Saldo: {{balanceBitcoin?.balance}}</p>
+<p>Cotação do Bitcoin: {{precoBitcoin.ticker?.last | currency: 'BRL'}}</p>

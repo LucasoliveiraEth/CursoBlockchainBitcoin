@@ -27,6 +27,7 @@ export class NavMenuComponent {
   desconectar()
   {
     localStorage.removeItem('wallet');
+    localStorage.removeItem('user');
     this.toastr.success('Carteira desconectada!');
   }
 }
