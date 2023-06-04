@@ -8,6 +8,7 @@ import { RegisterComponent } from './login/register/register.component';
 import { ImportComponent } from './login/import/import.component';
 import { ContentComponent } from './dashboard/content/content.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { AddContentComponent } from './dashboard/content/add-content/add-content.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'content', component: ContentComponent },
+  { path: 'addcontent', component: AddContentComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent }
 ];

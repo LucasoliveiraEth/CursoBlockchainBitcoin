@@ -23,9 +23,30 @@
             [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+
+          <!--<li class="nav-item" [routerLinkActive]="['link-active']" (mouseenter)="showSubmenu()" (mouseleave)="hideSubmenu()">
             <a class="nav-link text-dark" [routerLink]="['/content']">Conteúdos</a>
+            <ul class="submenu" [ngClass]="{'show': isSubmenuVisible}">
+              <li>
+                <a class="nav-link text-dark" [routerLink]="['/content/incluir']">Subpágina</a>
+              </li>
+            </ul>
+          </li>-->
+
+          <li class="nav-item" [routerLinkActive]="['link-active']" (mouseenter)="showSubmenu()" (mouseleave)="hideSubmenu()">
+            <a class="nav-link text-dark" [routerLink]="['/content']">Conteúdos</a>
+            <div class="submenu" [ngClass]="{'show': isSubmenuVisible}">
+              <div class="submenu-content">
+                <ul>
+                  <li>
+                    <a class="nav-link text-dark" [routerLink]="['/addcontent']">Adicionar</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </li>
+
+
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/profile']">Perfil</a>
           </li>

@@ -5,11 +5,15 @@
         <div class="card-body">
           <h5 class="card-title">PÁGINA INICIAL</h5>
           <hr>
+          <div *ngIf="contents">
+            <img src="../../../assets/img/carregando.gif" width="150px" height="100px"/>
+            Neste momento nenhum conteúdo foi publicado.
+          </div>
           <div class="video-list">
             <div class="video-item" *ngFor="let content of contents">
               <div class="video-details">
-                <h6 class="video-title">{{content.usuario}} - {{ content.titulo }}</h6>
-                <p class="video-description">{{ content.name }}</p>
+                <h6 class="video-title">{{content.userName}} - {{ content.title }}</h6>
+                <p class="video-description">{{ content.description }}</p>
               </div>
               <ng-container *ngIf="content.permission; else noPermission">
                 <ng-container *ngIf="content.type === 'video'">
@@ -23,7 +27,7 @@
                   </figure>
                 </ng-container>
                 <ng-container *ngIf="content.type === 'image'">
-                  <img class = "imageSize" [src]="content.url" alt="{{ content.name }}">
+                  <img class = "imageSize" [src]="content.url" alt="{{ content.description}}">
                 </ng-container>
               </ng-container>
               <ng-template #noPermission>

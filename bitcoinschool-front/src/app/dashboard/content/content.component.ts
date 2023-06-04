@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Content } from 'src/models/Content';
 
 @Component({
   selector: 'app-content',
@@ -15,7 +16,9 @@ export class ContentComponent implements OnInit {
   @Input()
   videoSrc!: string;
 
-  public contents = [
+  public contents: Content[] = [];
+
+  /*public contents = [
     {
       id: 1,
       usuario: '@btcschool',
@@ -47,7 +50,7 @@ export class ContentComponent implements OnInit {
       price: 0.00330000
     },
     // adicionar mais conteúdos aqui
-  ];
+  ];*/
 
   constructor(private route: Router,
     private sanitizer: DomSanitizer) { }
