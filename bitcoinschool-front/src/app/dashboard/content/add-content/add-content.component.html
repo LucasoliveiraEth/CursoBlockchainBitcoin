@@ -1,4 +1,79 @@
 <div class="container" style="padding-top: 70px;">
-  <p>add-content works!</p>
+  <form class="p-1" [formGroup]="contentFormGroup">
+    <div>
+      <h3>Novo Conteúdo</h3>
+      <h6>Defina as informações e o preço desejado pelo seu conteúdo.</h6>
+      <h6>É necessário ter saldo na sua carteira, o custo de cada conteúdo é de 0.00100000 satoshis.</h6>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.title"
+        placeholder="Title"
+        formControlName="title"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['title'].touched) && contentForm['title'].errors}"/>
+        <div *ngIf="contentForm['title'].hasError('required')" class="invalid-feedback">
+          Titulo não informado.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.description"
+        placeholder="Descrição"
+        formControlName="description"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['description'].touched) && contentForm['description'].errors}"/>
+        <div *ngIf="contentForm['description'].hasError('required')" class="invalid-feedback">
+          Descrição não informada.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <label>
+          <input type="radio"
+          value="video"
+          formControlName="type">
+          Vídeo
+        </label>
+        <label>
+          <input type="radio"
+          value="image"
+          formControlName="type">
+          Imagem
+        </label>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.description"
+        placeholder="Url"
+        formControlName="url"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['url'].touched) && contentForm['url'].errors}"/>
+        <div *ngIf="contentForm['url'].hasError('required')" class="invalid-feedback">
+          Url não informada.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.description"
+        placeholder="Preço"
+        formControlName="price"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['price'].touched) && contentForm['price'].errors}"/>
+        <div *ngIf="contentForm['price'].hasError('required')" class="invalid-feedback">
+          Preço não informado.
+        </div>
+      </div>
+    </div><br>
+    <br>
+    <div class="form-row">
+      <div class="form-group col-12">
+        <button class="btn btn-warning btn-lg btn-block"
+        (click)="addContent()">
+          Incluir
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 
