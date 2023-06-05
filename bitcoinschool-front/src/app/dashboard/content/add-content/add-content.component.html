@@ -9,7 +9,7 @@
       <div class="form-group col-sm-6">
         <input class="form-control" type="text"
         [value]="content?.title"
-        placeholder="Title"
+        placeholder="Titulo"
         formControlName="title"
         [ngClass]="{ 'is-invalid':  (submitted || contentForm['title'].touched) && contentForm['title'].errors}"/>
         <div *ngIf="contentForm['title'].hasError('required')" class="invalid-feedback">
@@ -45,7 +45,7 @@
       <br>
       <div class="form-group col-sm-6">
         <input class="form-control" type="text"
-        [value]="content?.description"
+        [value]="content?.url"
         placeholder="Url"
         formControlName="url"
         [ngClass]="{ 'is-invalid':  (submitted || contentForm['url'].touched) && contentForm['url'].errors}"/>
@@ -56,7 +56,8 @@
       <br>
       <div class="form-group col-sm-6">
         <input class="form-control" type="text"
-        [value]="content?.description"
+        [inputMask]="currencyInputMask"
+        [value]="content?.price"
         placeholder="Preço"
         formControlName="price"
         [ngClass]="{ 'is-invalid':  (submitted || contentForm['price'].touched) && contentForm['price'].errors}"/>

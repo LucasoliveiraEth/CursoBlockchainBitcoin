@@ -10,11 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 // **************************************************
 import ptBr from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './login/user/user.component';
 import { RegisterComponent } from './login/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { WalletService } from './services/wallet.service';
 import { ImportComponent } from './login/import/import.component';
@@ -25,6 +25,7 @@ import { UserService } from './services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddContentComponent } from './dashboard/content/add-content/add-content.component';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -52,7 +53,9 @@ registerLocaleData(ptBr);
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    InputMaskModule
+
   ],
   providers: [
      // ************************************

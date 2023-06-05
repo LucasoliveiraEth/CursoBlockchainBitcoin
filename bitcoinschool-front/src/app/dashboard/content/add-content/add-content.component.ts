@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-add-content',
@@ -11,6 +12,14 @@ export class AddContentComponent {
   content : any;
   contentFormGroup! : FormGroup;
   submitted = false;
+  currencyInputMask = createMask({
+    alias: 'numeric',
+    groupSeparator: ',',
+    digits: 8,
+    digitsOptional: false,
+    prefix: '₿ ',
+    placeholder: '0'
+  });
 
   constructor(private formBuilder: FormBuilder,
      private toastr: ToastrService){
