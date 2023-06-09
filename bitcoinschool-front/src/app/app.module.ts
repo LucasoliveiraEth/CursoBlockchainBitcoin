@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { WalletService } from './services/wallet.service';
 import { ImportComponent } from './login/import/import.component';
-import { ResponsiveVideoComponent } from './shared/responsive-video/responsive-video.component';
 import { ContentComponent } from './dashboard/content/content.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { UserService } from './services/user.service';
@@ -26,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddContentComponent } from './dashboard/content/add-content/add-content.component';
 import { InputMaskModule } from '@ngneat/input-mask';
+import { ContentService } from './services/content.service';
+import { SafePipe } from './shared/safe.pipe';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -40,10 +41,10 @@ registerLocaleData(ptBr);
     UserComponent,
     RegisterComponent,
     ImportComponent,
-    ResponsiveVideoComponent,
     ContentComponent,
     ProfileComponent,
-    AddContentComponent
+    AddContentComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,8 @@ registerLocaleData(ptBr);
      { provide: LOCALE_ID, useValue: 'pt' },
      // ************************************
      WalletService,
-     UserService
+     UserService,
+     ContentService
   ],
   bootstrap: [AppComponent]
 })

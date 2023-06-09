@@ -55,11 +55,27 @@
       </div>
       <br>
       <div class="form-group col-sm-6">
+        <label>
+          <input type="radio"
+          value="gratuito"
+          formControlName="free">
+          Gratuito
+        </label>
+        <label>
+          <input type="radio"
+          value="pago"
+          formControlName="free">
+          Pago
+        </label>
+      </div>
+      <br>
+      <div class="form-group col-sm-6" *ngIf="contentForm['free'].value === 'pago'">
         <input class="form-control" type="text"
         [inputMask]="currencyInputMask"
         [value]="content?.price"
         placeholder="Preço"
         formControlName="price"
+        style="text-align: left;"
         [ngClass]="{ 'is-invalid':  (submitted || contentForm['price'].touched) && contentForm['price'].errors}"/>
         <div *ngIf="contentForm['price'].hasError('required')" class="invalid-feedback">
           Preço não informado.

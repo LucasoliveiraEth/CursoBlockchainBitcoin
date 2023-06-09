@@ -1,11 +1,10 @@
-export class Content {
-  userName!: string;
+export class ContentRequest {
+  userCode!: string;
   title!: string;
   description!: string;
   type!: string;
   url!: string;
-  permission!: boolean;
   free!: boolean;
   price!: number;
-  date!: Date;
+  transaction!: string;
 }

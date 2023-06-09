@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  profile(userCode : string): Observable<any> {
+  getprofile(userCode : string): Observable<any> {
     return this.http.get<any>(this.apiUrl + "/profile?userCode=" + userCode);
   }
 

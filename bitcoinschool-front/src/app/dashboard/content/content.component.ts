@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ContentService } from 'src/app/services/content.service';
 import { Content } from 'src/models/Content';
 
 @Component({
@@ -17,6 +18,8 @@ export class ContentComponent implements OnInit {
   videoSrc!: string;
 
   public contents: Content[] = [];
+
+  //public contents = [];
 
   /*public contents = [
     {
@@ -53,7 +56,8 @@ export class ContentComponent implements OnInit {
   ];*/
 
   constructor(private route: Router,
-    private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer,
+    private contentService: ContentService) { }
 
   ngOnInit(): void {
     this.wallet = localStorage.getItem('wallet');
@@ -63,6 +67,20 @@ export class ContentComponent implements OnInit {
     {
       this.route.navigate(['/login/user']);
     }
+
+    const user = localStorage.getItem('user');
+
+    /*this.contents.forEach((item) => {
+        item.url = this.sanitizer.bypassSecurityTrustResourceUrl(item.url);
+     });*/
+
+    this.contentService.getcontent(user ?? "")
+        .subscribe({
+          next: (response) => {
+            this.contents = response
+          },
+          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+    })
   }
 
   comprar(item: any)

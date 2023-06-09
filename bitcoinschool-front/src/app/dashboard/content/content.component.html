@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title">PÁGINA INICIAL</h5>
           <hr>
-          <div *ngIf="contents">
+          <div *ngIf="!contents">
             <img src="../../../assets/img/carregando.gif" width="150px" height="100px"/>
             Neste momento nenhum conteúdo foi publicado.
           </div>
@@ -19,7 +19,7 @@
                 <ng-container *ngIf="content.type === 'video'">
                   <figure>
                     <div class="boxVideo">
-                        <iframe [src]="content.url"
+                        <iframe [src]="content.url | safe"
                         width="700" height="575" frameborder="0"
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>

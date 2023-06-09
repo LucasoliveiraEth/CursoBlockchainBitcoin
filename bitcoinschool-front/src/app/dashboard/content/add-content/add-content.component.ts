@@ -29,6 +29,7 @@ export class AddContentComponent {
         description : [undefined, Validators.required],
         type : ['video', Validators.required],
         url : [undefined, Validators.required],
+        free : ['gratuito', Validators.required],
         price : [undefined, Validators.required]
       });
   }
