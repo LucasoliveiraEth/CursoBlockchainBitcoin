@@ -12,7 +12,7 @@
           <div class="video-list">
             <div class="video-item" *ngFor="let content of contents">
               <div class="video-details">
-                <h6 class="video-title">{{content.userName}} - {{ content.title }}</h6>
+                <h6 class="video-title">@{{content.userName}} - {{ content.title }}</h6>
                 <p class="video-description">{{ content.description }}</p>
               </div>
               <ng-container *ngIf="content.permission; else noPermission">
