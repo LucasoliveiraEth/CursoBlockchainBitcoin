@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   public precoBitcoin : any;
   public balanceBitcoin : any;
   wallet!: string | null;
+  carregando: boolean = true;
+
   constructor(private http: HttpClient,
     private router: Router,
     private walletService: WalletService){}
@@ -25,14 +27,21 @@ export class HomeComponent implements OnInit {
     }
 
     this.precoBitcoin = this.http.get('https://www.mercadobitcoin.net/api/BTC/ticker')
-    .subscribe(response => this.precoBitcoin = response)
+    .subscribe({
+      next: (response) => {
+        this.precoBitcoin = response;
+        this.carregando = false;
+      },
+      error: (error) => console.log("Ocorreu erro na requisição de obter preço do bitcoin:" + error)
+    })
 
     this.walletService.balance(walletLogada)
         .subscribe({
           next: (response) => {
-            this.balanceBitcoin = response
+            this.balanceBitcoin = response;
+            this.carregando = false;
           },
-          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+          error: (error) => console.log("Ocorreu erro na requisição ao obter o saldo:" + error)
         })
 
   }
