@@ -8,4 +8,5 @@ export class Content {
   free!: boolean;
   price!: number;
   date!: Date;
+  publicKey!: string;
 }

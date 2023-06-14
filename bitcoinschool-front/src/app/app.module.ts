@@ -27,6 +27,7 @@ import { AddContentComponent } from './dashboard/content/add-content/add-content
 import { InputMaskModule } from '@ngneat/input-mask';
 import { ContentService } from './services/content.service';
 import { SafePipe } from './shared/safe.pipe';
+import { TransactionService } from './services/transaction.service';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -64,7 +65,8 @@ registerLocaleData(ptBr);
      // ************************************
      WalletService,
      UserService,
-     ContentService
+     ContentService,
+     TransactionService
   ],
   bootstrap: [AppComponent]
 })

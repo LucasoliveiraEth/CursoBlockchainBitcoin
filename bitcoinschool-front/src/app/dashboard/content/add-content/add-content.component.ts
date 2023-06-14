@@ -5,7 +5,6 @@ import { createMask } from '@ngneat/input-mask';
 import { ContentService } from 'src/app/services/content.service';
 import { Router } from '@angular/router';
 import { ContentRequest } from 'src/models/ContentRequest';
-import { Content } from 'src/models/Content';
 
 @Component({
   selector: 'app-add-content',
@@ -60,6 +59,12 @@ export class AddContentComponent implements OnInit {
   {
     this.submitted = true;
 
+     //TO-DO Realizar a Transaction
+    console.log('WalletSender: ' + this.wallet);
+    //TO-DO Obter PrivateKey do WalletSender
+    console.log('walletReceiver: Wallet Administrativa');
+    console.log('Value: ' + parseFloat(this.contentForm['price'].value.replace(/[^0-9.-]+/g,"")));
+
     if (this.contentFormGroup.invalid) {
       return;
     }
@@ -81,7 +86,6 @@ export class AddContentComponent implements OnInit {
       this.contentRequest.free = true;
       this.contentRequest.price = 0;
     }
-
 
     this.contentRequest.transaction = "c714a19e8dd239c3f1cb4c6beb13d270a2a8c9e5b2dc4b3fe60aa8df0c923b7e"; //this.contentForm['transaction'].value;
 
