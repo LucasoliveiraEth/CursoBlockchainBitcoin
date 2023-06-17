@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ContentPermissionRequest } from 'src/models/ContentPermissionRequest';
 import { ContentRequest } from 'src/models/ContentRequest';
 
 @Injectable({
@@ -12,11 +13,15 @@ export class ContentService {
 
   constructor(private http: HttpClient) { }
 
-  getcontent(userCode : string): Observable<any> {
+  get(userCode : string): Observable<any> {
     return this.http.get<any>(this.apiUrl + "/getbyusercode?userCode=" + userCode);
   }
 
-  createcontent(contentRequest : ContentRequest) {
+  create(contentRequest : ContentRequest) {
     return this.http.post(this.apiUrl + "/create", contentRequest);
+  }
+
+  createpermission(contentPermissionRequest : ContentPermissionRequest) {
+    return this.http.post(this.apiUrl + "/createpermission", contentPermissionRequest);
   }
 }

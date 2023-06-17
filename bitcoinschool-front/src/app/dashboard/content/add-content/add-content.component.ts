@@ -89,7 +89,7 @@ export class AddContentComponent implements OnInit {
 
     this.contentRequest.transaction = "c714a19e8dd239c3f1cb4c6beb13d270a2a8c9e5b2dc4b3fe60aa8df0c923b7e"; //this.contentForm['transaction'].value;
 
-    this.contentService.createcontent(this.contentRequest)
+    this.contentService.create(this.contentRequest)
         .subscribe({
           next: (response) => {
             this.contentResponse = response
