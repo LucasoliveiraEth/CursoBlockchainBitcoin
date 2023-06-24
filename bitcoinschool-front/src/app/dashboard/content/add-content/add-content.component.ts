@@ -93,11 +93,11 @@ export class AddContentComponent implements OnInit {
     this.contentService.create(this.contentRequest)
         .subscribe({
           next: (response) => {
-            this.contentResponse = response
-
+            this.contentResponse = response;
+            console.log("conyteudo incluido;")
             this.toastr.success('Conteúdo incluído com sucesso!');
           },
-          error: (error) => console.log("Ocorreu erro na requisição:" + error)
+          error: (error) => console.log("Ocorreu erro na requisição de dar permissão:" + error)
     })
   }
 }

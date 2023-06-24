@@ -18,6 +18,7 @@ export class ContentService {
   }
 
   create(contentRequest : ContentRequest) {
+    console.log(contentRequest);
     return this.http.post(this.apiUrl + "/create", contentRequest);
   }
 

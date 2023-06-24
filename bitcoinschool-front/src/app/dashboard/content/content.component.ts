@@ -79,6 +79,7 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
               this.contentPermissionRequest.userCode = this.user;
               this.contentPermissionRequest.transaction = this.transaction.hash;
 
+
               this.contentService.createpermission(this.contentPermissionRequest)
                   .subscribe({
                     next: () => {
@@ -87,7 +88,7 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
                               next: (response) => {
                                 this.contents = response
                               },
-                              error: (error) => console.log("Ocorreu erro na requisição:" + error)
+                              error: (error) => console.log("Ocorreu erro na requisição de obter os conteudos:" + error)
                         });
                     this.toastr.success('Conteúdo liberado com sucesso!');
                 },
