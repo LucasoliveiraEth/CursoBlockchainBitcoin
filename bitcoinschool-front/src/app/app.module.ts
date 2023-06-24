@@ -20,6 +20,12 @@ import { WalletService } from './services/wallet.service';
 import { ImportComponent } from './login/import/import.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { UserService } from './services/user.service';
+import { ContentService } from './services/content.service';
+import { TransactionService } from './services/transaction.service';
+import { ContentComponent } from './dashboard/content/content.component';
+import { AddContentComponent } from './dashboard/content/add-content/add-content.component';
+import { InputMaskModule } from '@ngneat/input-mask';
+import { SafePipe } from 'src/shared/safe.pipe';
 
 registerLocaleData(ptBr);
 // **************************************************
@@ -34,7 +40,10 @@ registerLocaleData(ptBr);
     UserComponent,
     RegisterComponent,
     ImportComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContentComponent,
+    AddContentComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -42,14 +51,17 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    InputMaskModule
   ],
   providers: [
      // ************************************
      { provide: LOCALE_ID, useValue: 'pt' },
      // ************************************
      WalletService,
-     UserService
+     UserService,
+     ContentService,
+     TransactionService
   ],
   bootstrap: [AppComponent]
 })

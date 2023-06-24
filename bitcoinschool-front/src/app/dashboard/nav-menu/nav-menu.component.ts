@@ -4,10 +4,12 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html'
+  templateUrl: './nav-menu.component.html',
+  styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent {
   isExpanded = false;
+  isSubmenuVisible: boolean = false;
 
   constructor(private route: Router,
     private toastr: ToastrService) {
@@ -29,5 +31,13 @@ export class NavMenuComponent {
     localStorage.removeItem('wallet');
     localStorage.removeItem('user');
     this.toastr.success('Carteira desconectada!');
+  }
+
+  showSubmenu() {
+    this.isSubmenuVisible = true;
+  }
+
+  hideSubmenu() {
+    this.isSubmenuVisible = false;
   }
 }

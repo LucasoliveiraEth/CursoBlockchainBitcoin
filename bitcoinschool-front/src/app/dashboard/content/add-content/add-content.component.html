@@ -1,0 +1,98 @@
+<div class="container" style="padding-top: 70px;">
+  <form class="p-1" [formGroup]="contentFormGroup">
+    <div>
+      <h3>Novo Conteúdo</h3>
+      <h6>Defina as informações e o preço desejado pelo seu conteúdo.</h6>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.title"
+        placeholder="Titulo"
+        formControlName="title"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['title'].touched) && contentForm['title'].errors}"/>
+        <div *ngIf="contentForm['title'].hasError('required')" class="invalid-feedback">
+          Titulo não informado.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.description"
+        placeholder="Descrição"
+        formControlName="description"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['description'].touched) && contentForm['description'].errors}"/>
+        <div *ngIf="contentForm['description'].hasError('required')" class="invalid-feedback">
+          Descrição não informada.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <label>
+          <input type="radio"
+          value="video"
+          formControlName="type">
+          Vídeo
+        </label>
+        <label>
+          <input type="radio"
+          value="image"
+          formControlName="type">
+          Imagem
+        </label>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <input class="form-control" type="text"
+        [value]="content?.url"
+        placeholder="Url"
+        formControlName="url"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['url'].touched) && contentForm['url'].errors}"/>
+        <div *ngIf="contentForm['url'].hasError('required')" class="invalid-feedback">
+          Url não informada.
+        </div>
+      </div>
+      <br>
+      <div class="form-group col-sm-6">
+        <label>
+          <input type="radio"
+          value="gratuito"
+          formControlName="free">
+          Gratuito
+        </label>
+        <label>
+          <input type="radio"
+          value="pago"
+          formControlName="free">
+          Pago
+        </label>
+      </div>
+      <br>
+      <div class="form-group col-sm-6" *ngIf="contentForm['free'].value === 'pago'">
+        <input class="form-control" type="text"
+        [inputMask]="currencyInputMask"
+        [value]="content?.price"
+        placeholder="Preço"
+        formControlName="price"
+        style="text-align: left;"
+        [ngClass]="{ 'is-invalid':  (submitted || contentForm['price'].touched) && contentForm['price'].errors}"/>
+        <div *ngIf="contentForm['price'].hasError('required')" class="invalid-feedback">
+          Preço não informado.
+        </div>
+      </div>
+    </div><br>
+    <br>
+    <div class="form-row">
+      <div class="form-group col-12">
+        <button class="btn btn-warning btn-lg btn-block"
+        (click)="addContent()">
+          Incluir
+        </button>
+      </div>
+    </div>
+    <br>
+    <div>
+      <h6>O custo para conteúdo pago é de ₿ 0.00100000 satoshi e gratuito de ₿ 0.00010000 satoshis. O valor da taxa é fixa de ₿ 0.00001000 satoshis.</h6>
+    </div>
+  </form>
+</div>
