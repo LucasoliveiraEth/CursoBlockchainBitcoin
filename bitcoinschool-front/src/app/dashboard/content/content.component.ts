@@ -73,12 +73,16 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
           next: (response) => {
             this.transaction = response;
 
+            console.log(this.transaction.hash);
+
             if(this.transaction !== undefined)
             {
+              if(this.transaction.hash === "SemSaldo")
+                this.toastr.warning('Sem saldo disponivel!');
+
               this.contentPermissionRequest.contentId = item.id;
               this.contentPermissionRequest.userCode = this.user;
               this.contentPermissionRequest.transaction = this.transaction.hash;
-
 
               this.contentService.createpermission(this.contentPermissionRequest)
                   .subscribe({
@@ -88,7 +92,7 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
                               next: (response) => {
                                 this.contents = response
                               },
-                              error: (error) => console.log("Ocorreu erro na requisição de obter os conteudos:" + error)
+                              error: (error) => console.log("Ocorreu erro na requisição de obter:" + error)
                         });
                     this.toastr.success('Conteúdo liberado com sucesso!');
                 },
