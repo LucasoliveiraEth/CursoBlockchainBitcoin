@@ -55,9 +55,6 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
           next: (response) => {
             this.transaction = response;
 
-            console.log(this.transaction.hash);
-            console.log(this.transaction.hash);
-
             if(this.transaction.hash !== "SemSaldo")
             {
               this.contentPermissionRequest.contentId = item.id;
