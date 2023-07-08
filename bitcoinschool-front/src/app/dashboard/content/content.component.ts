@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/services/content.service';
 import { TransactionService } from 'src/app/services/transaction.service';
-import { WalletService } from 'src/app/services/wallet.service';
 import { Content } from 'src/models/Content';
 import { ContentPermissionRequest } from 'src/models/ContentPermissionRequest';
 import { TransactionRequest } from 'src/models/TransactionRequest';
@@ -25,14 +24,11 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
     constructor(private route: Router,
                 private contentService: ContentService,
                 private transactionService: TransactionService,
-                private toastr: ToastrService,
-                private walletService: WalletService) { }
-
+                private toastr: ToastrService) { }
 
   ngOnInit(): void {
       this.wallet = localStorage.getItem('wallet');
       this.user = localStorage.getItem('user');
-      const walletLogada: string = this.wallet ?? "";
 
       if(!this.wallet || !this.user)
       {
@@ -46,24 +42,10 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
           },
             error: (error) => console.log("Ocorreu erro na requisição:" + error)
           })
-
-      this.walletService.balance(walletLogada)
-          .subscribe({
-              next: (response) => {
-                this.balanceBitcoin = response
-          },
-              error: (error) => console.log("Ocorreu erro na requisição:" + error)
-          })
   }
 
   comprar(item: any)
   {
-    if(this.balanceBitcoin < (item.price + 1000))
-    {
-      this.toastr.warning('Sem saldo suficiente para comprar este conteúdo!');
-      return;
-    }
-
     this.transactionRequest.walletSender = this.wallet;
     this.transactionRequest.walletReceiver = item.publicKey;
     this.transactionRequest.value = item.price;
@@ -74,12 +56,10 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
             this.transaction = response;
 
             console.log(this.transaction.hash);
+            console.log(this.transaction.hash);
 
-            if(this.transaction !== undefined)
+            if(this.transaction.hash !== "SemSaldo")
             {
-              if(this.transaction.hash === "SemSaldo")
-                this.toastr.warning('Sem saldo disponivel!');
-
               this.contentPermissionRequest.contentId = item.id;
               this.contentPermissionRequest.userCode = this.user;
               this.contentPermissionRequest.transaction = this.transaction.hash;
@@ -98,6 +78,10 @@ import { TransactionRequest } from 'src/models/TransactionRequest';
                 },
                   error: (error) => console.log("Ocorreu erro na inserir a permissão:" + error)
                 })
+            }
+            else
+            {
+              this.toastr.warning('Sem saldo disponivel!');
             }
       },
         error: (error) => console.log("Ocorreu erro ao realizar a transaction:" + error)
