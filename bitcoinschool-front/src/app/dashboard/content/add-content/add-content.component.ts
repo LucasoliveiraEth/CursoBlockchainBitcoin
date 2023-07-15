@@ -80,6 +80,12 @@ export class AddContentComponent implements OnInit {
     this.contentRequest.url = this.contentForm['url'].value;
     this.contentRequest.free = this.contentForm['free'].value;
 
+    if(!this.validarURL(this.contentRequest.url))
+    {
+      this.toastr.warning('Url inválida!');
+      return;
+    }
+
     if(this.contentForm['free'].value === 'pago')
     {
       if(this.contentForm['price'].value === "price")
@@ -142,5 +148,11 @@ export class AddContentComponent implements OnInit {
       },
         error: (error) => console.log("Ocorreu erro ao realizar a transaction:" + error)
       })
+  }
+
+  validarURL(url: string): boolean {
+    const regex = /\.(gif|jpe?g|tiff?|png|webp|bmp|svg|mp4|webm|ogg|ogv|avi|mov|wmv|flv|mpg)$/i;
+    const embedRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be|vimeo\.com|dailymotion\.com|vine\.co|vid\.me|tiktok\.com|facebook\.com|instagram\.com|twitter\.com|soundcloud\.com|spotify\.com|mixcloud\.com|reverbnation\.com|slideshare\.net|scribd\.com|issuu\.com|kickstarter\.com|indiegogo\.com|patreon\.com|etsy\.com|coub\.com|gfycat\.com|giphy\.com|imgur\.com)\/.+/i;
+    return regex.test(url) || embedRegex.test(url);
   }
 }
